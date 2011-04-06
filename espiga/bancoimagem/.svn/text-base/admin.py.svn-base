@@ -1,0 +1,71 @@
+# -*- coding: utf-8 -*-
+from django.contrib import admin
+from models import BancoImagem
+from django.conf import settings
+from datetime import datetime
+from autenticacao.models import UserRH
+
+try:
+    import Image
+except ImportError:
+    from PIL import Image
+
+"""
+Criado por : Julianne
+Data:12/02/2010
+Descrição: AdminBancoImagem responsavel pela aparecia do formulario banco de imagem 
+Alterado por:
+Data:
+"""
+
+""" Admin Banco de Imagem """
+class AdminBancoImagem(admin.ModelAdmin):
+    list_display = ('vch_titulo', 'dat_foto', 'vch_fotografo', 'foto', 'fk_idsecretaria' )# define os campos que vao aparecer na consulta
+    exclude = ('dat_foto', 'img_miniatura',)# esconde o campo dat_foto do formulario
+    
+    """ Altera o formulario bancoimagem se for da comunicacao mostra o combo com todas as secretarias se nao esconde o campo secretaria """   
+    def get_form(self, request, obj=None, **kwargs):
+        form =  super(AdminBancoImagem, self).get_form(request, obj, **kwargs)
+        """ Pega a secretaria de quem ta logado """
+        userrh = UserRH.objects.get(fk_iduser = request.user)        
+        """ Verifica se quem ta logado e do gabinete do prefeito """
+        if userrh.fk_idsecretaria.int_idsecretaria==2100:
+            pass
+        else:
+            """ Apaga o campo secretaria do formulario """
+            del form.base_fields['fk_idsecretaria']
+        return form
+   
+    """ Alterar o save model para acrescentar o codigo da secretaria quando o usuario nao for do gabinete do prefeito e criar a miniatura da imagem"""    
+    def save_model(self, request, obj, form, change):
+        """ Pega a secretaria de quem ta logado """
+        userrh = UserRH.objects.get(fk_iduser = request.user)
+        """ Verifica se quem ta logado e do gabinete do prefeito """
+        if userrh.fk_idsecretaria.int_idsecretaria==2100:
+            pass
+        else:
+            """ Insere o codigo da secretaria do usuario que ta logado """
+            obj.fk_idsecretaria = userrh.fk_idsecretaria
+            
+        super(AdminBancoImagem, self).save_model(request, obj, form, change)
+      
+           
+
+    """ Altera a lista de banco de imagem se for da comunicacao mostra todas as noticias se nao so da secretaria de quem ta logado """
+    def queryset(self, request):
+         qs = super(AdminBancoImagem, self).queryset(request)
+         """ Pega a secretaria de quem ta logado """
+         userrh = UserRH.objects.get(fk_iduser = request.user)
+         """ Verifica se quem ta logado e do gabinete do prefeito """
+         if userrh.fk_idsecretaria.int_idsecretaria==2100:
+             return qs
+         else:
+             """ lista so as imagens da secretaria do usuario que ta logado """
+             return qs.filter(fk_idsecretaria = userrh.fk_idsecretaria.int_idsecretaria)
+    
+    class Media:
+        model = BancoImagem
+        js = (settings.MEDIA_URL + "js/jquery.js",)# insere o jquery na pagina
+        
+
+admin.site.register(BancoImagem, AdminBancoImagem)

@@ -1,0 +1,22 @@
+#Create your views here
+
+from bancoimagem.models import *
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.shortcuts import get_object_or_404, render_to_response
+from django.template import RequestContext
+
+def bancoimagem(request):
+    bancoimagem = BancoImagem.objects.order_by('dat_foto')#[:5]
+    paginator = Paginator(bancoimagem, 5)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        imagens = paginator.page(page)
+    except EmptyPage, InvalidPage:
+        imagens = paginator.page(paginator.num_pages)
+
+    return render_to_response('galeria.html',{'bancoimagem':imagens},context_instance=RequestContext(request))

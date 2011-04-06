@@ -1,0 +1,17 @@
+# -*- coding=utf8 -*-
+from django.forms import ModelForm
+from video.models import *
+from django import forms
+
+
+class VideoForm(ModelForm):
+
+    def clean_vch_video(self):
+        vch_video = self.cleaned_data['vch_video']
+        extensao = str(vch_video).split('.')[-1]
+        if extensao != "swf":
+            raise forms.ValidationError('Permitido apenas videos com extensao ".swf"')
+        return self.cleaned_data['vch_video']
+
+    class Meta:
+        model = Video

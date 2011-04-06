@@ -1,0 +1,155 @@
+# -*- coding: utf-8 -*-
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render_to_response
+from django.template import RequestContext
+from noticia.models import Noticia
+from arquivo.models import Lei, Arquivo
+from secretaria.models import Secretaria
+from datetime import datetime
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.utils import simplejson
+from django.http import HttpResponse
+
+
+def detalhar_noticia(request, noticia_id):
+    noticia_detalhada = Noticia.objects.filter(int_idnoticia = noticia_id).order_by('dat_noticia')[:10]
+    noticias_relacionadas = Noticia.objects.filter(fk_idsecretaria=noticia_detalhada[0].fk_idsecretaria).exclude(int_idnoticia=noticia_id).order_by('-dat_noticia')[:3]
+    return render_to_response('noticia_detalhada.html', locals(), context_instance=RequestContext(request))
+
+def mais_noticias(request):
+    #raise Exception(request.session['secretaria_id'])
+        
+    if not request.session.get('secretaria_id') in str(2100):
+             
+        secretaria = Secretaria.objects.get(int_idsecretaria = request.session['secretaria_id'] )
+        lista_mais_noticias = Noticia.objects.filter(fk_idsecretaria = secretaria).order_by('-dat_noticia')
+        lista_noticias_mes = lista_mais_noticias.dates('dat_noticia', 'month').reverse()
+        #raise Exception(lista_mais_noticias)
+    else:
+        #lista_mais_noticias = Noticia.objects.filter(fk_idsecretaria=2100).order_by('-dat_noticia')
+        lista_mais_noticias = Noticia.objects.all().order_by('-dat_noticia')
+        lista_noticias_mes = lista_mais_noticias.dates('dat_noticia', 'month').reverse()
+        
+    return render_to_response('mais_noticias.html', locals(), context_instance=RequestContext(request))
+
+def buscar(request):
+    parametro_busca = request.POST.get('txt_busca')
+    
+    if parametro_busca:
+        
+        lista_busca_noticia = Noticia.objects.filter(txt_noticia__icontains = parametro_busca).order_by('-dat_noticia')
+        lista_noticias_mes = lista_busca_noticia.dates('dat_noticia', 'month').reverse()
+        
+        
+#        lista_busca_lei = Lei.objects.filter(txt_resumo__icontains = parametro_busca).order_by('-dat_publicacao') or Lei.objects.filter(num_numero = parametro_busca).order_by('-dat_publicacao')
+        lista_busca_lei = Lei.objects.filter(vch_conteudo__icontains = parametro_busca).order_by('-dat_publicacao') or Lei.objects.filter(num_numero = parametro_busca).order_by('-dat_publicacao') or Lei.objects.filter( txt_resumo__icontains = parametro_busca).order_by('-dat_publicacao')  
+        lista_leis_mes = lista_busca_lei.dates('dat_publicacao', 'month').reverse() 
+        #vch_titulo 
+        lista_busca_edital = Arquivo.objects.filter(int_tipoarquivo = 1).filter(vch_titulo__icontains = parametro_busca).order_by('-dat_dataenvio')
+        lista_editais_mes = lista_busca_edital.dates('dat_dataenvio', 'month').reverse()
+        
+        lista_busca_documento = Arquivo.objects.filter(int_tipoarquivo = 2).filter(vch_titulo__icontains = parametro_busca).order_by('-dat_dataenvio')
+        lista_documento_mes = lista_busca_documento.dates('dat_dataenvio', 'month').reverse()
+        
+        
+        lista_busca_ato = Arquivo.objects.filter(int_tipoarquivo = 3).filter(vch_titulo__icontains = parametro_busca).order_by('-dat_dataenvio')
+        lista_ato_mes = lista_busca_ato.dates('dat_dataenvio', 'month').reverse()
+        
+    else:
+        
+        parametro_busca = str('Sem busca')
+        
+    '''
+    paginator = Paginator(lista_editais_mes, 5) 
+    
+    
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+    
+    try:
+        paginacao_edital = paginator.page(page)
+    except EmptyPage, InvalidPage:
+        paginacao_edital = paginator.page(paginator.num_pages)'''
+
+    
+    #extensao_lei = str(lista_busca_lei.vch_arquivo).split('.')[-1]
+    #lei so em resumo
+    #raise Exception(lista_busca_noticia)
+    #DiarioOficial.objects.filter(Q(num_edicao__icontains=valor1))
+
+    return render_to_response('resultado_busca.html', locals(), context_instance=RequestContext(request))
+
+
+
+'''
+    Warley dias 
+    Crinado busca de leis e documentos 
+
+'''
+''' Criado para redirecionar o tipo de busca '''
+def frmbusca_arquivo(request): 
+    titulo = "Arquivo"
+    return render_to_response('busca_documento.html', locals(), context_instance=RequestContext(request))
+
+def frmbusca_lei(request):
+    titulo = "leis"
+    return render_to_response('busca_documento.html', locals(), context_instance=RequestContext(request))
+
+
+''' Criado para execultar a busca, com retorno json '''
+
+def busca_lei_arquivo(request):
+    
+    if request.method == 'GET':
+        
+        parametro_busca = str(request.GET.get('txt_busca'))
+        tipo_busca = str(request.GET.get('tipo'))
+        
+        if tipo_busca == "leis":
+            listaIdLei = []
+            listaTituloLei = []
+            listaCaminhoLei = []
+            listaNumLei = []
+    
+            lista_busca_lei = Lei.objects.filter(txt_resumo__icontains = parametro_busca).order_by('-dat_publicacao') or Lei.objects.filter(num_numero = parametro_busca).order_by('-dat_publicacao')
+            
+            
+            for lei in lista_busca_lei:
+                listaIdLei = listaIdLei + [lei.int_idlei,]
+                listaTituloLei = listaTituloLei + [lei.vch_titulo,]
+                listaCaminhoLei = listaCaminhoLei + [unicode(lei.vch_arquivo),]
+                listaNumLei = listaNumLei + [unicode(lei.num_numero),]            
+            resultado = [{'listaIdLei':listaIdLei,'listaTituloLei':listaTituloLei,'listaCaminhoLei':listaCaminhoLei,'listaNumLei':listaNumLei,}]
+        else:
+            
+            listaIdDoc = []
+            listaTituloDoc = []
+            listaCaminhoDoc = []
+            listaCaminhoTip = []
+            
+            lista_busca_arquivo = Arquivo.objects.filter(vch_titulo__icontains = parametro_busca).order_by('-dat_dataenvio')
+            
+            #lista_busca_edital = Arquivo.objects.filter(int_tipoarquivo = 1).filter(vch_titulo__icontains = tipo_busca).order_by('-dat_dataenvio')
+            #lista_busca_documento = Arquivo.objects.filter(int_tipoarquivo = 2).filter(vch_titulo__icontains = tipo_busca).order_by('-dat_dataenvio')
+            #lista_busca_ato = Arquivo.objects.filter(int_tipoarquivo = 3).filter(vch_titulo__icontains = tipo_busca).order_by('-dat_dataenvio')
+            
+            for arq in lista_busca_arquivo:
+                listaIdDoc = listaIdDoc + [arq.int_idarquivo,]
+                listaTituloDoc = listaTituloDoc + [arq.vch_titulo,]
+                listaCaminhoDoc = listaCaminhoDoc + [unicode(arq.vch_arquivo),]
+                listaCaminhoTip = listaCaminhoTip + [arq.int_tipoarquivo]
+
+            resultado = [{'listaIdDoc':listaIdDoc,'listaTituloDoc':listaTituloDoc,'listaCaminhoDoc':listaCaminhoDoc,'listaCaminhoTip':listaCaminhoTip,}]
+            
+        json = simplejson.dumps(resultado)
+    return HttpResponse(json, mimetype="application/json")
+
+
+
+
+
+
+
+       

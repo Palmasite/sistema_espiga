@@ -1,0 +1,13 @@
+Perfilinicial = moduloconfiguraçao
+
+	---app---
+
+perfil(nome,email,cpf ou cnpf, telefone,codcliente)
+modulosapp(modulos)
+
+layout(topo)
+
+
+
+
+

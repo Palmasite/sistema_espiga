@@ -1,0 +1,22 @@
+{% extends "admin/change_form.html" %}
+{% block extrahead %}{{ block.super }}
+
+{% if original and original.img_foto %}
+
+<!-- Javascript resposavel por inserir a imagem miniatura no formulario editar noticia -->
+
+<script type="text/javascript">
+
+    $(document).ready(function(){	
+
+        var img = $('<img src="{{ MEDIA_URL }}{{ original.img_foto }}"  class="foto" alt="{{original.vch_titulo}}"/>');
+
+        $('div.form-row.img_foto').children('div').append(img);
+
+    });
+
+</script>
+
+{% endif %}
+
+{% endblock extrahead %}

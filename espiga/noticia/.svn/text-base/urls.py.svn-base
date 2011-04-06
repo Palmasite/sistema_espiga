@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+from django.conf.urls.defaults import *
+from noticia.views import *
+
+
+
+urlpatterns = patterns('',
+    #(r'^index/', 'index.views.index'),
+    (r'^detalhar/(?P<noticia_id>\d+)/$', 'noticia.views.detalhar_noticia'),
+    #(r'^mais/(?P<secretaria_id>\d+)/$', 'noticia.views.mais_noticias'),
+    (r'^mais/$',mais_noticias),
+    (r'^buscar/$', 'noticia.views.buscar'),
+    (r'^buscadocumento/$', 'noticia.views.frmbusca_arquivo'),
+    (r'^buscalei/$', 'noticia.views.frmbusca_lei'),    
+    (r'^buscaarquivolei/$', 'noticia.views.busca_lei_arquivo')
+)

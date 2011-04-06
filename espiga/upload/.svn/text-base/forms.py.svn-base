@@ -1,0 +1,46 @@
+#-*- coding: utf-8 -*-
+from django.forms import ModelForm
+from arquivo.models import Arquivo, Lei
+from django import forms
+from datetime import datetime
+
+#Vari�vel para formato de data
+DATETIME_FORMAT = '%d/%m/%Y %H:%M:%S'
+DATE_FORMAT = '%d/%m/%Y'
+
+#widget para exibir data
+class FormattedDateTimeInput(forms.DateTimeInput):
+    format = DATETIME_FORMAT
+
+class FormattedDateInput(forms.DateTimeInput):
+    format = DATE_FORMAT
+
+class ArquivoForm(ModelForm):
+	
+	def clean_vch_arquivo(self):
+		vch_arquivo = self.cleaned_data['vch_arquivo']
+		extensao = str(vch_arquivo).split('.')[-1]
+		if (extensao == "gif" or extensao == "jpg" or extensao == "jpeg" or extensao == "bmp" or extensao == "png" or
+		    extensao == "GIF" or extensao == "JPG" or extensao == "JPEG" or extensao == "BMP" or extensao == "PNG"):
+			raise forms.ValidationError(u'Não é permitido arquivos do tipo imagem!')
+		return self.cleaned_data['vch_arquivo']
+	
+	class Meta:
+		model = Arquivo
+		
+
+class LeiForm(ModelForm):
+	dat_publicacao = forms.DateField(label = u"Data de Publicação", input_formats=[DATE_FORMAT], widget=FormattedDateInput(), help_text="Formato: dd/mm/aaaa")
+	def clean_vch_arquivo(self):
+		vch_arquivo = self.cleaned_data['vch_arquivo']
+		extensao = str(vch_arquivo).split('.')[-1]
+		if (extensao == "gif" or extensao == "jpg" or extensao == "jpeg" or extensao == "bmp" or extensao == "png" or
+		    extensao == "GIF" or extensao == "JPG" or extensao == "JPEG" or extensao == "BMP" or extensao == "PNG"):
+			raise forms.ValidationError(u'Não é permitido arquivos do tipo imagem!')
+		return self.cleaned_data['vch_arquivo']
+
+	class Meta:
+		model = Lei
+
+
+		

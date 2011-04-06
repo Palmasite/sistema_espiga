@@ -1,0 +1,69 @@
+#-*- coding: utf-8 -*-
+from django.db import models
+import os
+from django.conf import settings
+from datetime import datetime
+from thumbs import ImageWithThumbsField
+from django import forms
+from secretaria.models import Secretaria
+
+"""
+Criado por : Julianne
+Data:22/02/2010
+Descrição: Model video
+Alterado por: Mayra
+Data: 01/03/2010
+"""
+
+
+""" Model video """
+class Video(models.Model):    
+    int_idvideo = models.AutoField(primary_key=True)
+    vch_titulo = models.CharField("Nome video", max_length=500)
+    vch_video = models.FileField("Video", upload_to="video/")
+    dat_dataenvio = models.DateTimeField("Data Envio", default=datetime.now())
+    boo_ativo = models.BooleanField("Ativo", default=True)
+    fkusuario = models.CharField(max_length=30)
+    fk_idsecretaria = models.ForeignKey(Secretaria, verbose_name="Secretaria")
+    img_foto = ImageWithThumbsField("Foto", upload_to = 'fotovideo/', sizes = ((368,278),), null = True, blank = True,)
+    
+    def save(self, force_insert=False, force_update=False):
+        super(Video, self).save(force_insert, force_update)
+        
+        if self.vch_video:
+            video = str(self.vch_video)
+            extensao = str(video).split('.')[-1]
+            data = datetime.now()
+            horario = str(data.day) + '_' + str(data.month) + '_' + str(data.year) + '_' + str(data.hour) + '_' + str(data.minute) + '_' + str(data.second)
+            self.vch_video = "video/%s_%s.%s" % (str(self.fkusuario), str(horario), extensao)
+            if os.path.exists(settings.MEDIA_ROOT + '/' + video):
+                os.rename(settings.MEDIA_ROOT + '/' + video, settings.MEDIA_ROOT + '/' + str(self.vch_video))
+            else:
+                self.vch_arquivo = "erro"
+                
+                
+
+        foto = str(self.img_foto)
+        if foto != '':        
+            f = str(foto).split('.') 
+            """ Renomeia img_foto"""
+            if not "368x278" in f:    
+                self.img_foto = f[0]+'.368x278.'+f[1]
+                os.remove(settings.MEDIA_ROOT+'/'+foto)
+                        
+            super(Video, self).save(force_insert, force_update)
+            """ Apaga a foto original da pasta """
+            
+        else:
+            super(Video, self).save(force_insert, force_update)                
+      
+        
+        
+    
+    def __unicode__(self):
+        return unicode(self.vch_titulo)
+            
+    class Meta:
+        verbose_name = u'Video'
+        verbose_name_plural = u'Videos'
+        

@@ -1,0 +1,37 @@
+## FastCGI programs have the same functionality as CGI programs,
+## but are considerably faster through lower interpreter startup
+## time and socketed communication
+##
+## Documentation: /usr/share/doc/lighttpd-doc/fastcgi.txt.gz
+##                http://www.lighttpd.net/documentation/fastcgi.html
+
+server.modules   += ( "mod_fastcgi" )
+server.modules   += ( "mod_rewrite" )
+server.modules   += ( "mod_expire" )
+server.modules   += ( "mod_redirect" )
+#server.modules   += ( "mod_cache" )
+server.modules   += ( "mod_proxy" )
+
+#$HTTP["host"] == "localhost" {
+    fastcgi.server = (
+        "/default.fcgi" => (
+            "main" => (
+                "socket" => "/tmp/lighttpd-default.sock",
+                "check-local" => "disable",
+                "bin-path" => "/var/django/projects/palmas/meu_projeto/deploy/default.fcgi",
+            )
+        )
+    )
+
+    url.rewrite-once = (
+        "^(/media/.*)$" => "$1",
+        "^(/admin_media/.*)$" => "$1",
+        "^(/.*)$" => "/default.fcgi$1"
+    )
+#}
+
+$HTTP["url"] =~ "\.(png|jpg|js|swf|css)$" {
+    expire.url = ( "" => "access 2 months" )
+    setenv.add-response-header=("Cache-Control"=>"private,no-transform")
+}
+

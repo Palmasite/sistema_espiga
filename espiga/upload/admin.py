@@ -1,0 +1,35 @@
+#-*- coding: utf-8 -*-
+from django.contrib import admin
+from upload.models import Arquivo, Galeria
+from upload.forms import ArquivoForm
+from django import forms
+from django.contrib.auth.models import User
+from admin_utils import MeuTabularInline, MeuModelAdmin
+from django.conf import settings
+from configuracoes.models import Modulo
+
+
+
+
+class ArquivoInline(MeuTabularInline):
+    form = ArquivoForm
+    fields = ('vch_titulo', 'vch_arquivo', 'dat_publicacao', 'char_tipo', 'txt_resumo')
+    #list_display = ('vch_titulo','vch_arquivo','dat_cadastro', 'dat_publicacao', 'txt_resumo')
+    #list_filter = ['vch_titulo']
+    #search_fields = ('vch_titulo', 'num_numero', 'txt_resumo', 'txt_resumo')
+    #list_per_page = 10
+    model = Arquivo
+    
+
+class GaleriaAdmin(MeuModelAdmin):
+    model = Galeria
+    inlines = [ArquivoInline,]
+    
+class ArquivoAdmin(admin.ModelAdmin):
+    list_filter = ['galeria']
+    model = Arquivo
+    
+if Modulo.objects.filter(modulo = 'servico'):
+    admin.site.register(Galeria, GaleriaAdmin)
+    admin.site.register(Arquivo, ArquivoAdmin)
+    

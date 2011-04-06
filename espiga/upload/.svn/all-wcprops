@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repositorio/portal2010/!svn/ver/8/src/portal/arquivo
+END
+admin1.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repositorio/portal2010/!svn/ver/8/src/portal/arquivo/admin1.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repositorio/portal2010/!svn/ver/8/src/portal/arquivo/__init__.py
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repositorio/portal2010/!svn/ver/8/src/portal/arquivo/admin.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repositorio/portal2010/!svn/ver/8/src/portal/arquivo/forms.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repositorio/portal2010/!svn/ver/8/src/portal/arquivo/models.py
+END

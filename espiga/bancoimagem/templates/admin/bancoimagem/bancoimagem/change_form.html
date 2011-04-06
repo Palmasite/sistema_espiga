@@ -1,0 +1,23 @@
+{% extends "admin/change_form.html" %}
+{% block extrahead %}{{ block.super }}
+
+{% if original and original.img_miniatura %}
+
+<!-- Javascript resposavel por inserir a imagem miniatura no formulario editar banco de imagem -->
+
+<script type="text/javascript">
+	
+    $(document).ready(function(){		
+
+        var img = $('<img src="{{ MEDIA_URL }}{{ original.img_miniatura }}" alt="{{original.vch_titulo}}" class="foto"/>');
+
+        $('div.form-row.img_foto').children('div').append(img);
+
+    });
+
+</script>
+
+
+{% endif %}
+
+{% endblock extrahead %}

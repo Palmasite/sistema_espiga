@@ -1,0 +1,67 @@
+# -*- coding: utf-8 -*-
+from django.contrib import admin
+from models import Noticia
+from django.conf import settings
+from django import forms
+from autenticacao.models import UserRH
+
+"""
+Criado por : Julianne
+Data:10/02/2010
+Descrição: AdminNoticia responsavel pela aparecia do formulario noticia 
+Alterado por:
+Data:
+"""
+
+""" Admin Noticia """
+class AdminNoticia(admin.ModelAdmin):
+    list_display = ('vch_titulo', 'dat_noticia', 'fk_idsecretaria', 'boo_ativo' )# defini os campos que vao aparecer no formulario
+    exclude = ('dat_noticia',)# esconde o campo dat_noticia do formulario
+    
+    """ Chama os javascript para o editor html """
+    class Media:
+        model = Noticia
+        js = (settings.MEDIA_URL + "js/jquery.js",# insere o jquery na pagina
+              settings.MEDIA_URL + "editorHtml/jscripts/tiny_mce/tiny_mce.js",# insere o javascript do editor html na pagina
+              settings.MEDIA_URL + "editorHtml/textarea.js",)# insere o javascript do editor html na pagina
+    
+    """ Altera o formulario noticia se for da comunicacao mostra o combo com todas as secretarias se nao esconde o campo secretaria """   
+    def get_form(self, request, obj=None, **kwargs):
+        form =  super(AdminNoticia, self).get_form(request, obj, **kwargs)
+        
+        """ Pega a secretaria de quem ta logado """
+        userrh = UserRH.objects.get(fk_iduser = request.user)        
+        """ Verifica se quem ta logado e do gabinete do prefeito """
+        if userrh.fk_idsecretaria.int_idsecretaria==2100:
+            pass
+        else:
+            """ Apaga o campo secretaria do formulario """
+            del form.base_fields['fk_idsecretaria']
+        return form
+    
+    """ Alterar o save model para acrescentar o codigo da secretaria quando o usuario nao for do gabinete do prefeito """
+    def save_model(self, request, obj, form, change):
+
+        """ Pega a secretaria de quem ta logado """
+        userrh = UserRH.objects.get(fk_iduser = request.user)
+        """ Verifica se quem ta logado e do gabinete do prefeito """
+        if userrh.fk_idsecretaria.int_idsecretaria==2100:
+            pass
+        else:
+            """ Insere o codigo da secretaria do usuario que ta logado """
+            obj.fk_idsecretaria = userrh.fk_idsecretaria
+        obj.save()
+    
+    """ Altera a lista de noticia se for da comunicacao mostra todas as noticias se nao so da secretaria de quem ta logado """
+    def queryset(self, request):
+         qs = super(AdminNoticia, self).queryset(request)
+         """ Pega a secretaria de quem ta logado """
+         userrh = UserRH.objects.get(fk_iduser = request.user)
+         """ Verifica se quem ta logado e do gabinete do prefeito """
+         if userrh.fk_idsecretaria.int_idsecretaria==2100:
+             return qs
+         else:
+             """ lista so as noticias da secretaria do usuario que ta logado """
+             return qs.filter(fk_idsecretaria = userrh.fk_idsecretaria.int_idsecretaria)
+
+admin.site.register(Noticia, AdminNoticia)

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repositorio/portal2010/!svn/ver/8/src/portal/bancoimagem
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repositorio/portal2010/!svn/ver/8/src/portal/bancoimagem/urls.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repositorio/portal2010/!svn/ver/8/src/portal/bancoimagem/__init__.py
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repositorio/portal2010/!svn/ver/8/src/portal/bancoimagem/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repositorio/portal2010/!svn/ver/8/src/portal/bancoimagem/views.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repositorio/portal2010/!svn/ver/8/src/portal/bancoimagem/models.py
+END

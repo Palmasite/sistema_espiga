@@ -1,0 +1,73 @@
+#-*- coding: utf-8 -*-
+from django.contrib import admin
+from video.models import Video
+from django import forms
+from autenticacao.models import UserRH
+from django.contrib.auth.models import User
+from video.forms import *
+"""
+Criado por : Julianne
+Data:12/02/2010
+Descrição: ArquivoAdmin responsavel pela aparecia do formulario arquivo 
+Alterado por:
+Data:
+"""
+
+""" Admin Arquivo """
+class VideoAdmin(admin.ModelAdmin):
+    form = VideoForm
+	
+    list_display = ('vch_titulo','vch_video','dat_dataenvio', 'boo_ativo', 'usuario', 'fk_idsecretaria')
+    list_filter = ['vch_titulo']
+    search_fields = ('vch_titulo',)
+    list_per_page = 10
+    exclude = ('dat_dataenvio',)
+    
+    """ Coloca o nome do usuario na listagem """
+    def usuario(self, obj):
+        user = User.objects.get(id = obj.fkusuario)
+        return user.first_name
+    usuario.short_description = u'Usuário'
+    
+    """ Altera o formulario arquivo se for da comunicacao mostra o combo com todas as secretarias se nao esconde o campo secretaria """
+    def get_form(self, request, obj=None):
+        form = super(VideoAdmin, self).get_form(request, obj)
+        """ Apaga o campo usuario do formulario """
+        del form.base_fields['fkusuario']
+        """ Pega a secretaria de quem ta logado """
+        userrh = UserRH.objects.get(fk_iduser = request.user)        
+        """ Verifica se quem ta logado e do gabinete do prefeito """
+        if userrh.fk_idsecretaria.int_idsecretaria==2100:
+            pass
+        else:
+            """ Apaga o campo secretaria do formulario """
+            del form.base_fields['fk_idsecretaria']            
+        return form   
+        
+    """ Alterar o save model para acrescentar o codigo da secretaria quando o usuario nao for do gabinete do prefeito """
+    def save_model(self, request, obj, form, change):
+        """ Insere o id do usuario que ta logado no campo fkusuario """
+        obj.fkusuario = request.user
+        """ Pega a secretaria de quem ta logado """
+        userrh = UserRH.objects.get(fk_iduser = request.user)
+        """ Verifica se quem ta logado e do gabinete do prefeito """
+        if userrh.fk_idsecretaria.int_idsecretaria==2100:
+            pass
+        else:
+            """ Insere o codigo da secretaria do usuario que ta logado """
+            obj.fk_idsecretaria = userrh.fk_idsecretaria
+        obj.save()
+    
+    """ Altera a lista de arquivo se for da comunicacao mostra todas os arquivos se nao so da secretaria de quem ta logado """
+    def queryset(self, request):
+         qs = super(VideoAdmin, self).queryset(request)
+         """ Pega a secretaria de quem ta logado """
+         userrh = UserRH.objects.get(fk_iduser = request.user)
+         """ Verifica se quem ta logado e do gabinete do prefeito """
+         if userrh.fk_idsecretaria.int_idsecretaria==2100:
+             return qs
+         else:
+             """ lista so os arquivos da secretaria do usuario que ta logado """
+             return qs.filter(fk_idsecretaria = userrh.fk_idsecretaria.int_idsecretaria)
+    
+admin.site.register(Video, VideoAdmin)

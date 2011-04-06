@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+from django.contrib import admin
+from django import forms
+from enquete.models import Enquete, Escolha
+from admin_utils import MeuModelAdmin, MeuTabularInline
+from autenticacao.models import UserRH
+from django.conf import settings
+
+"""
+Criado por : Julianne
+Data:12/02/2010
+Descrição: AdminEnquete responsavel pela aparecia do formulario Enquete 
+Alterado por:
+Data:
+"""
+
+""" Tabular inline de escolha """
+class EscolhaInline(MeuTabularInline):
+    fieldsets = ((None,{'fields':('escolha',)}),)
+    model = Escolha  
+    max_num = 3
+
+""" Admin Enquete """
+class EnqueteAdmin(MeuModelAdmin):
+        
+    class Media:
+        model = Enquete
+        js = (settings.MEDIA_URL + "js/jquery.js",
+              settings.MEDIA_URL + "js/inline_functions.js",)
+        
+    list_display = ('pergunta', 'data_pub', 'boo_ativo', 'fk_idsecretaria')
+    inlines = [EscolhaInline]
+    exclude = ('data_pub',)
+    list_filter = ['data_pub']
+    search_fields = ['pergunta']
+    date_hierarchy = 'data_pub'
+    
+    """ Altera o formulario enquete se for da comunicacao mostra o combo com todas as secretarias se nao esconde o campo secretaria """   
+    def get_form(self, request, obj=None, **kwargs):
+        form =  super(EnqueteAdmin, self).get_form(request, obj, **kwargs)
+        """ Pega a secretaria de quem ta logado """
+        userrh = UserRH.objects.get(fk_iduser = request.user)
+        """ Verifica se quem ta logado e do gabinete do prefeito """
+        if userrh.fk_idsecretaria.int_idsecretaria==2100:
+            pass
+        else:
+            """ Apaga o campo secretaria do formulario """
+            del form.base_fields['fk_idsecretaria']
+        return form
+    
+    """ Alterar o save model para acrescentar o codigo da secretaria quando o usuario nao for do gabinete do prefeito """
+    def save_model(self, request, obj, form, change):
+        """ Pega a secretaria de quem ta logado """
+        userrh = UserRH.objects.get(fk_iduser = request.user)
+        """ Verifica se quem ta logado e do gabinete do prefeito """
+        if userrh.fk_idsecretaria.int_idsecretaria==2100:
+            pass
+        else:
+            """ Insere o codigo da secretaria do usuario que ta logado """
+            obj.fk_idsecretaria = userrh.fk_idsecretaria
+        obj.save()
+
+    """ Altera a lista de enquete se for da comunicacao mostra todas as enquetes se nao so da secretaria de quem ta logado """
+    def queryset(self, request):
+         qs = super(EnqueteAdmin, self).queryset(request)
+         """ Pega a secretaria de quem ta logado """
+         userrh = UserRH.objects.get(fk_iduser = request.user)
+         """ Verifica se quem ta logado e do gabinete do prefeito """
+         if userrh.fk_idsecretaria.int_idsecretaria==2100:
+             return qs
+         else:
+             """ lista so as enquetes da secretaria do usuario que ta logado """
+             return qs.filter(fk_idsecretaria = userrh.fk_idsecretaria.int_idsecretaria)
+
+admin.site.register(Enquete, EnqueteAdmin)

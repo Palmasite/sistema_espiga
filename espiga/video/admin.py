@@ -1,0 +1,27 @@
+#-*- coding: utf-8 -*-
+from django.contrib import admin
+from video.models import Video
+from django import forms
+from django.contrib.auth.models import User
+from configuracoes.models import Modulo
+
+""" Admin Arquivo """
+class VideoAdmin(admin.ModelAdmin):
+	
+    list_display = ('vch_titulo','dat_dataenvio', 'boo_ativo','foto',)
+    list_filter = ['vch_titulo']
+    search_fields = ('vch_titulo',)
+    list_per_page = 10
+    exclude = ('dat_dataenvio',)
+    
+    """ Coloca o nome do usuario na listagem """
+    def usuario(self, obj):
+        user = User.objects.get(id = obj.fkusuario)
+        return user.first_name
+    usuario.short_description = u'Usuário'
+    
+    """ Altera o formulario arquivo se for da comunicacao mostra o combo com todas as secretarias se nao esconde o campo secretaria """
+
+
+if Modulo.objects.filter(modulo = 'video'): 
+	admin.site.register(Video, VideoAdmin)

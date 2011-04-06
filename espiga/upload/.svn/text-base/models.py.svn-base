@@ -1,0 +1,94 @@
+#-*- coding: utf-8 -*-
+from django.db import models
+import os
+from django.conf import settings
+from datetime import datetime
+from django import forms
+from secretaria.models import Secretaria
+
+"""
+Criado por : Julianne
+Data:12/02/2010
+Descrição: Model noticia
+Alterado por:
+Data:
+"""
+
+
+""" Model Arquivo """
+class Arquivo(models.Model):
+    arquivo = (('1','Edital'),('2','Documento'),('3','Atos'),)    
+    int_idarquivo = models.AutoField(primary_key=True)
+    vch_titulo = models.CharField("Nome Arquivo", max_length=500)
+    vch_arquivo = models.FileField("Arquivo", upload_to="doc/")
+    int_tipoarquivo = models.IntegerField("Tipo Arquivo", choices = arquivo)
+    dat_dataenvio = models.DateTimeField("Data Envio", default=datetime.now())
+    boo_ativo = models.BooleanField("Ativo", default=True)
+    fkusuario = models.CharField(max_length=30)
+    fk_idsecretaria = models.ForeignKey(Secretaria, verbose_name="Secretaria")
+    
+    def save(self):
+        super(Arquivo, self).save()
+        
+        if self.vch_arquivo:
+            arquivo = str(self.vch_arquivo)
+            extensao = str(arquivo).split('.')[-1]
+            data = datetime.now()
+            horario = str(data.day) + '_' + str(data.month) + '_' + str(data.year) + '_' + str(data.hour) + '_' + str(data.minute) + '_' + str(data.second)
+            self.vch_arquivo = "doc/%s_%s.%s" % (str(self.fkusuario), str(horario), extensao)
+            if os.path.exists(settings.MEDIA_ROOT + '/' + arquivo):
+                os.rename(settings.MEDIA_ROOT + '/' + arquivo, settings.MEDIA_ROOT + '/' + str(self.vch_arquivo))
+            else:
+                self.vch_arquivo = "erro"
+        super(Arquivo, self).save()
+    
+    def __unicode__(self):
+        return unicode(self.vch_titulo)
+            
+    class Meta:
+        db_table = u'arquivo'
+        verbose_name = u'Arquivo'
+        verbose_name_plural = u'Arquivos'
+        
+class Lei(models.Model):
+    int_idlei = models.AutoField(primary_key=True)
+    models.ForeignKey(Secretaria, verbose_name="Secretaria")
+    vch_titulo = models.CharField("Nome Arquivo", max_length=500)
+    vch_arquivo = models.FileField("Arquivo", upload_to="doc/lei/")
+    dat_cadastro = models.DateTimeField("Data de Envio", default=datetime.now())
+    char_tipo = models.BooleanField("Ativar Lei")
+    num_numero = models.CharField("Número da Lei", max_length=500)
+    dat_publicacao = models.DateField("Data de Publicação")
+    txt_resumo = models.TextField("Resumo", max_length=4000)
+    fkusuario = models.CharField(max_length=30)
+    fk_idsecretaria = models.ForeignKey(Secretaria, verbose_name="Secretaria")
+    vch_conteudo = models.TextField("Conteudo", default=None)
+
+
+    
+    def save(self):
+        super(Lei, self).save()
+        if self.vch_arquivo:
+            arquivo = str(self.vch_arquivo)
+            extensao = str(arquivo).split('.')[-1]
+            data = datetime.now()
+            horario = str(data.day) + '_' + str(data.month) + '_' + str(data.year) + '_' + str(data.hour) + '_' + str(data.minute) + '_' + str(data.second)
+            self.vch_arquivo = "doc/lei/%s_%s.%s" % (str(self.fkusuario), str(horario), extensao)
+            if os.path.exists(settings.MEDIA_ROOT + '/' + arquivo):
+                os.rename(settings.MEDIA_ROOT + '/' + arquivo, settings.MEDIA_ROOT + '/' + str(self.vch_arquivo))
+            else:
+                self.vch_arquivo = "erro"
+        super(Lei, self).save()
+    #/usr/local/apache2/htdocs/appsDjango/sgarquivo/media/lei
+    def __unicode__(self):
+    #self.nomeSecretaria()
+        return unicode(self.vch_titulo)
+    
+    class Meta:
+        db_table = u'lei'
+        verbose_name = u'Lei'
+        verbose_name_plural = u'Leis'
+
+        
+
+        

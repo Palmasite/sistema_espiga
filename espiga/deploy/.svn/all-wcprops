@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/repositorio/sedumah/!svn/ver/1/deploy
+END
+lighttpd.conf
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/repositorio/sedumah/!svn/ver/1/deploy/lighttpd.conf
+END
+apache.conf
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repositorio/sedumah/!svn/ver/1/deploy/apache.conf
+END
+default.wsgi
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repositorio/sedumah/!svn/ver/1/deploy/default.wsgi
+END
+default.fcgi
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repositorio/sedumah/!svn/ver/1/deploy/default.fcgi
+END

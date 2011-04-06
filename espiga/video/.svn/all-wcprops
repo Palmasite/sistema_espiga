@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repositorio/portal2010/!svn/ver/7/src/portal/video
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repositorio/portal2010/!svn/ver/7/src/portal/video/urls.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repositorio/portal2010/!svn/ver/7/src/portal/video/__init__.py
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repositorio/portal2010/!svn/ver/7/src/portal/video/admin.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repositorio/portal2010/!svn/ver/7/src/portal/video/forms.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repositorio/portal2010/!svn/ver/7/src/portal/video/views.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repositorio/portal2010/!svn/ver/7/src/portal/video/models.py
+END
+videoantes.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repositorio/portal2010/!svn/ver/7/src/portal/video/videoantes.html
+END

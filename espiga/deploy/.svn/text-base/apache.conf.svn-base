@@ -1,0 +1,58 @@
+NameVirtualHost *
+<VirtualHost *>
+	ServerAdmin marinho@gmail.com 
+	
+	DocumentRoot /var/www/
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /var/www/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ErrorLog /var/log/apache2/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog /var/log/apache2/access.log combined
+	ServerSignature On
+
+	WSGIScriptAlias / "/var/django/projects/sistema_portal/portal/deploy/default.wsgi"
+
+	<Directory "/var/django/projects/sistema_portal/portal/deploy">
+	    Order deny,allow
+	    Allow from all
+	</Directory>
+
+	Alias /media "/var/django/projects/sistema_portal/portal/media"
+	Alias /admin_media "/var/django/trunk/django1.1.1/contrib/admin/media"
+
+	<Location "/media">
+	    SetHandler None
+	</Location>
+
+    <Location "/admin_media">
+        SetHandler None
+    </Location>
+
+    # Browser cache
+    # mod_expire
+    #ExpiresActive On
+    #<FilesMatch "\.(ico|git|jpe?g|png|js|css)$">
+        #ExpiresDefault "access plus 1 year"
+    #</FilesMatch>
+
+    # HTTP Compression
+    # mod_deflate
+    SetOutputFilter DEFLATE
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+</VirtualHost>
