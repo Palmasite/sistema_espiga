@@ -1,0 +1,23 @@
+</div>
+<h1 style="clear:none;text-align:center;margin-top:17px;">Outros V&iacute;deos</h1>
+<div id="outros_videos">
+
+		<ul>
+			{% for video in lista_video %}
+			
+					<a href="{%url video.views.galeria_video video_id=video.int_idvideo%}">
+							<li>{{ video.vch_titulo }}</li>
+							<img src="{{ MEDIA_URL }}{{ video.img_foto }}" alt="{{ imagem.vch_titulo }}" title="{{ imagem.vch_titulo }}" />			
+					</a>
+			
+			{% endfor %}
+		</ul>
+	</div>
+
+
+
+
+{% for vi in video %}
+
+		{{vi.vch_url|safe}}
+	{% endfor %}
