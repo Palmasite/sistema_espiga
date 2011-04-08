@@ -1,0 +1,103 @@
+/* 
+ * Configurações Geral
+ */
+
+html {overflow-y: scroll;}
+html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small,  strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+	font-family: Arial, Droid, Verdana, Helvetica, sans-serif;
+	line-height:1.3em;
+}
+body {
+	line-height: 1;
+	text-align: center;
+	background: url("img/bg.jpg") repeat-x;
+	font-size:13px;
+	
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+section, article, aside, header, footer, nav, dialog, figure {
+	display:block;
+}
+ul{list-style:none}
+
+
+/* 
+ * Estrutura
+ */
+#head{width:100%;height: 130px;background:#254689}
+#topo{width:1000px;height: 130px;background:#254689;margin:0 auto;background: url("../images_portal/topo_bg.png") repeat-x}
+#cabecalho{width:990px;height: 20px;background: #845768;margin:0 auto;text-align: right;padding: 5px ;background: url("../images_portal/head_bg.png")}
+#menu{width:100%;height: 50px;background:#435674;text-align: center}
+#fullbanner{width:1000px;height:100px;background:#458675;margin:0 auto}
+#content{width:1000px;background:#378264;margin:0 auto}
+#coluna-esquerda{width:200px;float:left}
+#conteudo{width:600px;height:500px;background:#589456;float:left}
+#conteudo_interno{width:800px;height:500px;background:#589456;float:left}
+#coluna-direita{width:200px;height:500px;background:#356972;float:left}
+#rodape{width:100%;height:200px;background:#356972;float:left}
+
+/*
+ * logo
+ */
+#logo{width:1000px;margin:0 auto;text-align:left;padding:15px}
+#logo img{}
+/*
+ * menu
+ */
+#menu {background:url("../menu_bg.png")}
+#menu ul{list-style: none;margin:0 auto;width:1000px}
+#menu ul li{float:left;padding:15px 20px}
+
+/*
+ * Graos
+ */
+
+h2{padding:5px 2px;border-left:solid 10px #123345} /* ---------------------------Primeira Cor do sistema*/
+.dados{padding:5px;border:solid 1px #fff;margin-top:10px}
+.block_ligth{padding:15px;background:#F5F5F5;margin-bottom:10px}
+.block_ligth a{font-weight: bold;text-decoration: none;color:#000;margin:10px 0;display:block}
+.block_ligth span{font-size:13px;display:block;text-align:left;margin:5px 0}
+/*
+ * Area_restrita
+ */
+
+
+.area_restrita input[type="text"]{margin: 5px 0;border: none;height: 26px;background: url("../images_portal/usr.jpg") no-repeat #fff;padding-left:30px;width:120px }
+.area_restrita input[type="password"]{margin: 5px 0;border: none;height: 26px;background: url("../images_portal/pass.jpg") no-repeat #fff;padding-left:30px;width:120px }
+  
+
+/*
+ * Videos_light
+ */
+.dados{padding:5px;border:solid 1px #fff;margin-top:10px}
+.img_video_ligth{width:151px; height: 87px; background:#A02221;padding:2px;overflow: hidden} /* ---------------------------Primeira Cor do sistema*/
+
+
+/*
+ * netWorks_ligth
+ */
+
+.netWorks_ligth{width:100%;height: 100px;background: #000;margin-bottom: 10px} /* ---------------------------Segunda Cor do sistema*/
+.netWorks_ligth span{color:#fff;display:block;text-align: left;margin:10px}																 /* ---------------------------Segunda Cor do sistema*/
+.netWorks_ligth .netWorks_icones{border:solid 1px #333;width:166px;height: 46px;margin-left:15px}
+.netWorks_ligth img{margin-top:5px}
+
+
+
+/*
+ * bandeiras_thin
+ */
+.bandeiras_thin {list-style: none;}
+.bandeiras_thin li{display:inline-block}
+
+
+/*
+ * /
+

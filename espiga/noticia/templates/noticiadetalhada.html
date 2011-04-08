@@ -1,15 +1,23 @@
+{% extends "layout.html" %}
 
-<h1>Notícias Detalhada</h1>
-{%for noticia in noticia_detalhada%}
-{{noticia.dat_noticia|date:"j \de F \de Y" }} - {{noticia.vch_titulo}}
+{% block conteudo %}
+<div id="conteudo_interno">
+	<h1>Notícias Detalhada</h1>
+	{%for noticia in noticia_detalhada%}
+	{{noticia.dat_noticia|date:"j \de F \de Y" }} - {{noticia.vch_titulo}}
+	{%endfor%}
+	
+	
+	<h1>Notícias Relacionadas</h1>
+	{%for noticia in noticias_relacionadas%}
+	<a href="{% url noticia.views.detalhar_noticia noticia_id=noticia.int_idnoticia %}">{{noticia.dat_noticia|date:"d/m/y"}} - {{noticia.vch_titulo}}<a/>
 {%endfor%}
+</div>
 
+{% endblock %}
 
-<h1>Notícias Relacionadas</h1>
-{%for noticia in noticias_relacionadas%}
-<a href="{% url noticia.views.detalhar_noticia noticia_id=noticia.int_idnoticia %}">{{noticia.dat_noticia|date:"d/m/y"}} - {{noticia.vch_titulo}}<a/>
-{%endfor%}
+{% block direita %}
 
-
+{% endblock %}
 
 

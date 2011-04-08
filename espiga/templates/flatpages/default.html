@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block titulo %}{{ flatpage.title }} - {{ block.super }}{% endblock %}
+
+{% block h1 %}{{ flatpage.title }}{% endblock %}
+
+{%block conteudo_interno%}
+
+{{ flatpage.content }}
+
+{% endblock %}
+
+{% block direita %}
+
+{% endblock %}

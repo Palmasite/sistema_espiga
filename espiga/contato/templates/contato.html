@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block conteudo_interno %}
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.as_table }}
+		<input type="submit" value="Enviar contato" />
+	</form>
+	{% endblock %}
+	
+	
+{% block direita %}
+
+{% endblock %}
+
