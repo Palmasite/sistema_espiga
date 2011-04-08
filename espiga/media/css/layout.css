@@ -38,7 +38,7 @@ ul{list-style:none}
 #fullbanner{width:1000px;height:100px;background:#458675;margin:0px auto 10px auto }
 #content{width:1000px;background:#378264;margin:0 auto}
 #coluna-esquerda{width:200px;float:left}
-#conteudo{height:500px;background:#F5F5F5;float:left;margin: 0 10px;padding:10px;border:solid 1px #EAEAEA}
+#conteudo{height:500px;float:left;margin: 0 10px;padding:10px;}
 #conteudo_interno{height:500px;background:#589456;float:left}
 #coluna-direita{width:200px;height:500px;float:left}
 
@@ -66,6 +66,9 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 .block_ligth{padding:15px;background:#F5F5F5;margin-bottom:10px;border:solid 1px #EAEAEA}
 .block_ligth a{font-weight: bold;text-decoration: none;color:#000;margin:10px 0;display:block}
 .block_ligth span{font-size:13px;display:block;text-align:left;margin:5px 0}
+
+.block_full{margin-top:20px;border:solid 1px #EAEAEA;background:#F5F5F5;}
+.block_full h2{text-align: left;padding-left: 15px;margin-left:10px}
 #votar{margin:10px 30px}
 /*
  * Area_restrita
@@ -81,6 +84,13 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
  */
 .dados{padding:5px;border:solid 1px #fff;margin-top:10px}
 .img_video_ligth{width:151px; height: 87px; background:#A02221;padding:2px;overflow: hidden} /* ---------------------------Primeira Cor do sistema*/
+
+/*
+ * Videos_full
+ */
+.dados{padding:5px;border:solid 1px #fff;margin-top:10px}
+.img_video_full{width:150px; height: 87px; background:#A02221;padding:2px;overflow: hidden;float:left;margin:0 10px} /* ---------------------------Primeira Cor do sistema*/
+
 
 
 /*
