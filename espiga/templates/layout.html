@@ -51,24 +51,21 @@
 		{% endblock %}
 			<div id="conteudo">
 				{% block conteudo %}
-				
+					{% include "graos_index/noticias_destaque.html" %}
 				{% endblock %}
 			</div>
 	
 		<div id="conteudo_interno">
 		{% block conteudo_interno %}	
 			
-			
 		{% endblock %}
 		</div>
 		{% block direita %}
 			<div id="coluna-direita">
-		
 				{% include "graos_index/banner_200_200.html" %}
 				{% include "graos_index/banner_200_100.html" %}
 				{% include "graos_index/banner_200_100.html" %}
 				{% include "graos_index/enquete.html" %}
-		
 			</div>
 		{% endblock %}
 		<div id="aux">

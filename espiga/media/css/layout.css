@@ -38,9 +38,9 @@ ul{list-style:none}
 #fullbanner{width:1000px;height:100px;background:#458675;margin:0px auto 10px auto }
 #content{width:1000px;background:#378264;margin:0 auto}
 #coluna-esquerda{width:200px;float:left}
-#conteudo{height:500px;background:#589456;float:left;margin: 0 5px}
-#conteudo_interno{width:800px;height:500px;background:#589456;float:left}
-#coluna-direita{width:200px;height:500px;background:#356972;float:left}
+#conteudo{height:500px;background:#F5F5F5;float:left;margin: 0 10px;padding:10px;border:solid 1px #EAEAEA}
+#conteudo_interno{height:500px;background:#589456;float:left}
+#coluna-direita{width:200px;height:500px;float:left}
 
 #rodape{width:100%;height:150px;background:url("../images_portal/rodape_bg.png") #459 repeat-x;float:left}
 #image_rodape{width:1000px;height:85%;margin:0 auto;}
@@ -63,7 +63,7 @@ ul{list-style:none}
 
 h2{padding:5px 2px;border-left:solid 10px #123345} /* ---------------------------Primeira Cor do sistema*/
 .dados{padding:5px;border:solid 1px #fff;margin-top:10px;text-align: left}
-.block_ligth{padding:15px;background:#F5F5F5;margin-bottom:10px}
+.block_ligth{padding:15px;background:#F5F5F5;margin-bottom:10px;border:solid 1px #EAEAEA}
 .block_ligth a{font-weight: bold;text-decoration: none;color:#000;margin:10px 0;display:block}
 .block_ligth span{font-size:13px;display:block;text-align:left;margin:5px 0}
 #votar{margin:10px 30px}
@@ -126,4 +126,10 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 /*
  */
 
-
+/* noticia_destaque*/
+.noticia_destaque{position:relative}
+.noticia_destaque_descricao{background:#A20000;height: 30px;width:555px;position:absolute;top:200px;opacity: 0.8;}
+.noticia_destaque .destaque_conteudo{position:absolute;top:205px;color:#fff;margin:auto;width:555px;height: 20px}
+.noticia_destaque a#ctr_prev{}
+.noticia_destaque a#ctr_next{}
+.destaque_conteudo span{width:450px;display: inline-block}
