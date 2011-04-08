@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>       
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>GM Viagens</title>
+        <base href="{{MEDIA_URL}}" />
+        <link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />  
+        <link rel="shortcut icon" href="favicon.ico" />          
+  </head>
+
+<body>
+	
+	<div id="head">
+		<div id="topo">
+			<div id="cabecalho">
+				{% block cabecalho %}{% endblock %} 
+			</div>
+			<div id="logo">
+				<img src="images_portal/logo.jpg"></img>
+			</div>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li>PRINCIPAL</li>
+			<li>INSTITUCIONAL</li>
+			<li>SERVIÇOS</li>
+			<li>FOTOS</li>
+			<li>VÍDEOS</li>
+			<li>NOTÍCIAS</li>
+			<li>ARTIGO</li>
+			<li>LINKS</li>
+			<li>CONTATO</li>
+		</ul>
+	</div>
+	<div id="fullbanner">
+			{% include "graos_index/fullbanner.html" %}
+	</div>
+	<div id="content">
+		{% block colunaEsquerda %}
+			<div id="coluna-esquerda">
+			
+				{% include "graos_index/area_restrita.html" %}
+				{% include "graos_index/videos_ligth.html" %}
+				{% include "graos_index/netWorks_ligth.html" %}
+			 
+			</div>
+		{% endblock %}
+		{% block conteudo %}
+			<div id="conteudo">
+			</div>
+		{% endblock %}
+		{% block direita %}
+			<div id="coluna-direita">
+		
+				{% include "graos_index/area_restrita.html" %}
+		
+			</div>
+		{% endblock %}
+		<div id="aux">
+			
+		</div>
+		
+	</div>
+	<div id="rodape">
+			{% block rodape %}{% endblock %}
+	</div>
+
+</body>
