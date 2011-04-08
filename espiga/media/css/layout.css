@@ -35,14 +35,16 @@ ul{list-style:none}
 #topo{width:1000px;height: 130px;background:#254689;margin:0 auto;background: url("../images_portal/topo_bg.png") repeat-x}
 #cabecalho{width:990px;height: 20px;background: #845768;margin:0 auto;text-align: right;padding: 5px ;background: url("../images_portal/head_bg.png")}
 #menu{width:100%;height: 50px;background:#435674;text-align: center}
-#fullbanner{width:1000px;height:100px;background:#458675;margin:0 auto}
+#fullbanner{width:1000px;height:100px;background:#458675;margin:0px auto 10px auto }
 #content{width:1000px;background:#378264;margin:0 auto}
 #coluna-esquerda{width:200px;float:left}
-#conteudo{width:600px;height:500px;background:#589456;float:left}
+#conteudo{height:500px;background:#589456;float:left;margin: 0 5px}
 #conteudo_interno{width:800px;height:500px;background:#589456;float:left}
 #coluna-direita{width:200px;height:500px;background:#356972;float:left}
-#rodape{width:100%;height:200px;background:#356972;float:left}
 
+#rodape{width:100%;height:150px;background:url("../images_portal/rodape_bg.png") #459 repeat-x;float:left}
+#image_rodape{width:1000px;height:85%;margin:0 auto;}
+#rodape_palmasite{color:#fff;width:1000px;height:10%;margin:5px auto;text-align: left}
 /*
  * logo
  */
@@ -60,10 +62,11 @@ ul{list-style:none}
  */
 
 h2{padding:5px 2px;border-left:solid 10px #123345} /* ---------------------------Primeira Cor do sistema*/
-.dados{padding:5px;border:solid 1px #fff;margin-top:10px}
+.dados{padding:5px;border:solid 1px #fff;margin-top:10px;text-align: left}
 .block_ligth{padding:15px;background:#F5F5F5;margin-bottom:10px}
 .block_ligth a{font-weight: bold;text-decoration: none;color:#000;margin:10px 0;display:block}
 .block_ligth span{font-size:13px;display:block;text-align:left;margin:5px 0}
+#votar{margin:10px 30px}
 /*
  * Area_restrita
  */
@@ -100,4 +103,27 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 
 /*
  * /
+
+/*
+ * banner_200_200
+ */
+.banner_200_200{width:200px;height:200px;background: #000;color:#fff;margin-bottom: 5px}
+
+/*
+ * /
+
+/*
+ * banner_200_100
+ */
+.banner_200_100{width:200px;height:100px;background: #0000ff;color:#fff;margin-bottom: 5px}
+/*
+ * /
+
+/*
+ * enquete
+ */
+.enquete span{color:#000;font-weight: bold}
+/*
+ */
+
 

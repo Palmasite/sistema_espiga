@@ -1,4 +1,4 @@
-#Thu Apr 07 15:30:56 BRT 2011
+#Fri Apr 08 09:26:10 BRT 2011
 eclipse.preferences.version=1
 encoding//espiga/admin_utils.py=utf-8
 encoding//espiga/bancoimagem/admin.py=utf-8
@@ -10,6 +10,7 @@ encoding//espiga/noticia/models.py=utf-8
 encoding//espiga/noticia/urls.py=utf-8
 encoding//espiga/noticia/views.py=utf-8
 encoding//espiga/perfilinicial/admin.py=utf-8
+encoding//espiga/publicidade/models.py=utf-8
 encoding//espiga/upload/admin.py=utf-8
 encoding//espiga/upload/forms.py=utf-8
 encoding//espiga/upload/models.py=utf-8

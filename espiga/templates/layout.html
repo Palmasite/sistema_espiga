@@ -47,14 +47,25 @@
 			 
 			</div>
 		{% endblock %}
-		{% block conteudo %}
 			<div id="conteudo">
+				{% block conteudo %}
+				
+				{% endblock %}
 			</div>
+	
+		<div id="conteudo_interno">
+		{% block conteudo_interno %}	
+			
+			
 		{% endblock %}
+		</div>
 		{% block direita %}
 			<div id="coluna-direita">
 		
-				{% include "graos_index/area_restrita.html" %}
+				{% include "graos_index/banner_200_200.html" %}
+				{% include "graos_index/banner_200_100.html" %}
+				{% include "graos_index/banner_200_100.html" %}
+				{% include "graos_index/enquete.html" %}
 		
 			</div>
 		{% endblock %}
@@ -64,7 +75,15 @@
 		
 	</div>
 	<div id="rodape">
-			{% block rodape %}{% endblock %}
+		<div id="image_rodape">
+			<img src="images_portal/logo.jpg" />
+		</div>
+		<div id="rodape_palmasite">
+		{% block rodape %}
+			Powered by PALMASITE INTERNET GROUP - Site Desenvolvido ESPIGA CMS!
+			<img id="by_palmasite" src="" /> 
+		{% endblock %}
+		</div>
 	</div>
 
 </body>
