@@ -20,5 +20,4 @@ def detalhar_noticia(request, noticia_id):
     return render_to_response('noticiadetalhada.html', locals(), context_instance=RequestContext(request))
 
 
-
        

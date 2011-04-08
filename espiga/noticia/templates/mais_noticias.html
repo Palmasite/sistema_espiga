@@ -1,20 +1,31 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
 
 {% load nomemes %}
-<ul class="outras_noticias">	
-	{% for mes in lista_noticias_mes %}
-	
-	<div class="box_noticias">
-	<h1>{{mes.month|mes}}/{{mes.year}}</h1>	
-		{% for mais_noticia in lista_mais_noticias %}
-		    {%ifequal mais_noticia.dat_noticia.year mes.year%}
-			{%ifequal mais_noticia.dat_noticia.month mes.month%}			
-			<li class="{% cycle 'linha1' 'linha2' %}"><a href="{% url noticia.views.detalhar_noticia noticia_id=mais_noticia.int_idnoticia %}">
-				<h3>{{mais_noticia.dat_noticia|date:"d/m/y"}} - {{ mais_noticia.vch_titulo|safe}}</h3>
-				 
-			</a></li>
-			{% endifequal %}
-			{% endifequal %}
-		{% endfor %}
-		</div>
-	{%endfor%}
-</ul>
+<div id="conteudo_interno">
+	<ul class="outras_noticias">	
+		{% for mes in lista_noticias_mes %}
+		
+		<div class="box_noticias">
+		<h1>{{mes.month|mes}}/{{mes.year}}</h1>	
+			{% for mais_noticia in lista_mais_noticias %}
+			    {%ifequal mais_noticia.dat_noticia.year mes.year%}
+				{%ifequal mais_noticia.dat_noticia.month mes.month%}			
+				<li class="{% cycle 'linha1' 'linha2' %}"><a href="{% url noticia.views.detalhar_noticia noticia_id=mais_noticia.int_idnoticia %}">
+					<h3>{{mais_noticia.dat_noticia|date:"d/m/y"}} - {{ mais_noticia.vch_titulo|safe}}</h3>
+
+				</a></li>
+				{% endifequal %}
+				{% endifequal %}
+			{% endfor %}
+			</div>
+		{%endfor%}
+	</ul>
+</div>
+
+{% endblock %}
+
+{% block direita %}
+
+{% endblock %}

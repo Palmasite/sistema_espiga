@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Thu Apr 07 10:36:55 BRT 2011
+=======
+#Thu Apr 07 15:30:56 BRT 2011
+>>>>>>> 6d3e8792535516c4596e2441b9f8b3a62cc8c670
 eclipse.preferences.version=1
 encoding//espiga/admin_utils.py=utf-8
 encoding//espiga/bancoimagem/admin.py=utf-8
@@ -9,9 +13,11 @@ encoding//espiga/enquete/models.py=utf-8
 encoding//espiga/noticia/admin.py=utf-8
 encoding//espiga/noticia/models.py=utf-8
 encoding//espiga/noticia/urls.py=utf-8
+encoding//espiga/noticia/views.py=utf-8
 encoding//espiga/perfilinicial/admin.py=utf-8
 encoding//espiga/upload/admin.py=utf-8
 encoding//espiga/upload/forms.py=utf-8
 encoding//espiga/upload/models.py=utf-8
 encoding//espiga/video/admin.py=utf-8
 encoding//espiga/video/models.py=utf-8
+encoding//espiga/views.py=utf-8
