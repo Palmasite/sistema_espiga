@@ -9,8 +9,9 @@ from django.conf import settings
 
 class Galeria(models.Model):
     idgaleria = models.AutoField(primary_key=True)
-    #titulo = models.CharField('Titulo', max_length=200)
-    descricao = models.CharField('Nome Galeria', max_length=500)
+    titulo = models.CharField('Titulo', max_length=200, )
+    descricao = models.CharField(u'Descrição', max_length=500, null=True, blank=True)
+    
     
     def __unicode__(self):
         return unicode(self.descricao)
@@ -44,6 +45,8 @@ class BancoImagem(models.Model):
     img_miniatura = models.CharField(max_length = 100, null = True, blank = True)
     dat_foto = models.DateTimeField("Data Foto", default = datetime.now)
     vch_fotografo = models.CharField("Fotógrafo", max_length = 250, null = True, blank = True)
+    capa_album = models.BooleanField("Capa do album")
+    
     galeria = models.ForeignKey('Galeria')
     def save(self):
         super(BancoImagem, self).save()

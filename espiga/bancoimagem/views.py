@@ -1,6 +1,6 @@
 #Create your views here
 
-from bancoimagem.models import *
+from bancoimagem.models import Galeria, BancoImagem
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
@@ -24,10 +24,11 @@ from django.template import RequestContext
 '''
 
 def galeria(request):
-    
     lista_galeria = Galeria.objects.all()
-    
-    
+    lista_imagem = BancoImagem.objects.all()
     return render_to_response('galeria.html',locals(), context_instance=RequestContext(request))
 
+def imagem_aleria(request,idgaleria):
+    lista_imagem = BancoImagem.objects.filter(galeria = idgaleria)
+    return render_to_response('imagem_galeria.html',locals(),context_instance=RequestContext(request))
     
