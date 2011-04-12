@@ -2,12 +2,14 @@
 	
 	<h2>Vídeos</h2>
 	<div class="dados">
+		{% for video in ultimo_video %}
 		<div class="img_video_ligth">
-			<img src="fotovideo/" /><!--{{ imgVideoLigth }}-->
+			<a href="/video/video/{{video.int_idvideo}}"><img src="{{MEDIA_URL}}{{video.img_foto}}" /><!--{{ imgVideoLigth }}--></a>
 		</div>
 		<span>
-			A populacao de palmas bla bla bal
+			{{video.vch_titulo}}
 		</span>
+		{% endfor%}
 		
 	</div>
 	<a href="">veja mais +</a>

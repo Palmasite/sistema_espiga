@@ -1,0 +1,20 @@
+<div class="block_full">
+	
+	<h2>Fotos</h2>
+	{% for galeria in lista_galeria %}
+	{% for imagem in lista_imagem%}
+		{% if imagem.galeria.idgaleria == galeria.idgaleria and imagem.capa_album%}
+		<div class="galeria_full_index">
+			<div class="img_video_full">
+				<a href="/bancoimagem/imagem/{{galeria.idgaleria}}/">
+				<img src="{{ MEDIA_URL }}{{ imagem.img_miniatura }}" alt="{{ imagem.vch_titulo }}" title="{{ imagem.vch_titulo }}" />
+				</a>
+			</div>
+			<span>{{galeria.titulo|slice:"50"}}</span>
+		</div>
+		{% endif %}
+
+	{% endfor%}
+{% endfor %}
+	<a href="/bancoimagem/galeria/" class="ver_mais">ver mais +</a>
+</div>

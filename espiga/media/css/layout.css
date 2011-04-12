@@ -26,7 +26,7 @@ section, article, aside, header, footer, nav, dialog, figure {
 	display:block;
 }
 ul{list-style:none}
-
+a{text-decoration:none;color:#000}
 
 /* 
  * Estrutura
@@ -40,7 +40,7 @@ ul{list-style:none}
 #coluna-esquerda{width:200px;float:left}
 #conteudo{height:500px;float:left;margin: 0 10px;padding:10px;}
 #conteudo_interno{height:500px;background:#589456;float:left}
-#coluna-direita{width:200px;height:500px;float:left}
+#coluna-direita{width:200px;float:left}
 
 #rodape{width:100%;height:150px;background:url("../images_portal/rodape_bg.png") #459 repeat-x;float:left}
 #image_rodape{width:1000px;height:85%;margin:0 auto;}
@@ -67,18 +67,17 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 .block_ligth a{font-weight: bold;text-decoration: none;color:#000;margin:10px 0;display:block}
 .block_ligth span{font-size:13px;display:block;text-align:left;margin:5px 0}
 
-.block_full{margin-top:20px;border:solid 1px #EAEAEA;background:#F5F5F5;}
+.block_full{margin-top:20px;border:solid 1px #EAEAEA;background:#F5F5F5;text-align:left;padding:10px}
 .block_full h2{text-align: left;padding-left: 15px;margin-left:10px}
+
+.ver_mais{font-weight: bold;margin:10px 20px 0px 0;margin:8px;display:block;text-align:right;font-size:12px;height: 20px;clear:both}
+
 #votar{margin:10px 30px}
 /*
  * Area_restrita
  */
-
-
 .area_restrita input[type="text"]{margin: 5px 0;border: none;height: 26px;background: url("../images_portal/usr.jpg") no-repeat #fff;padding-left:30px;width:120px }
 .area_restrita input[type="password"]{margin: 5px 0;border: none;height: 26px;background: url("../images_portal/pass.jpg") no-repeat #fff;padding-left:30px;width:120px }
-  
-
 /*
  * Videos_light
  */
@@ -89,8 +88,10 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
  * Videos_full
  */
 .dados{padding:5px;border:solid 1px #fff;margin-top:10px}
-.img_video_full{width:150px; height: 87px; background:#A02221;padding:2px;overflow: hidden;float:left;margin:0 10px} /* ---------------------------Primeira Cor do sistema*/
-
+.img_video_full{width:150px; height: 87px; background:#A02221;padding:2px;overflow: hidden;float:left;margin:10px} /* ---------------------------Primeira Cor do sistema*/
+.img_video_full img{width:145px; height: 77px;margin:4px}
+.galeria_full_index{width:170px;float:left;}
+.galeria_full_index span{margin-left:15px;}
 
 
 /*
@@ -135,7 +136,15 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 .enquete span{color:#000;font-weight: bold}
 /*
  */
+ 
+/*
+ * Noticias_lista
+ */
 
+ul.noticias_lista{list-style: none}
+ul.noticias_lista li{}
+ul.noticias_lista li span{font-weight: bold}  
+  
 /* noticia_destaque*/
 .noticia_destaque{position:relative}
 .noticia_destaque_descricao{background:#A20000;height: 30px;width:555px;position:absolute;top:200px;opacity: 0.8;}

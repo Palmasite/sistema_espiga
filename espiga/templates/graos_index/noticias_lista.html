@@ -1,1 +1,12 @@
-<h1>noticias lista</h1>
+<div class="noticia_lista block_full">
+	
+	<ul class="noticias_lista">
+		{% for noticia in outras_noticias %}
+		<li><a href="/noticia/detalhar/{{ noticia.int_idnoticia }}/"><span>{{ noticia.dat_noticia|timesince }} - </span>{{ noticia.txt_olho|striptags|slice:"70" }}...</a></li>
+		{% endfor %}
+		
+	</ul>
+	
+	<a class="ver_mais">ver mais +</a>
+	
+</div>
