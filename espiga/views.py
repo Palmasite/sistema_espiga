@@ -45,4 +45,4 @@ def logar(request):
 
 def sair(request):
     logout(request)
-    redirect('/index')
+    return redirect('/index')
