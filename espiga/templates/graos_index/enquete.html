@@ -1,6 +1,7 @@
 <div class="block_ligth enquete">
 	<h2>Enquete</h2>
 	<div class="dados">
+<<<<<<< HEAD
 		<span>Pergunta da enquete</span>
 		<form method="POST" action="/logar">
 			
@@ -12,6 +13,16 @@
 			
 			<input id="votar" type="image" src="{{MEDIA_URL}}images_portal/entrar.jpg" value="fasdfasd"/>
 			
+=======
+		<span>{{ultima_enquete.pergunta|safe}}</span>
+		<form method="POST" action="/enquete/votar/1/">
+			{% csrf_token %}
+			{% for opsao in enquete_esolhas %}
+				<input type="radio" name="escolha" id="choice" value="{{opsao.id_escolha}}" />
+				<label>{{opsao.escolha}}</label><br />
+			{% endfor %}
+			<input id="votar" type="image" src="images_portal/entrar.jpg" value="fasdfasd"/>
+>>>>>>> 5d15da2f679343a5cd6f40a9625361274ac60237
 		</form>
 		
 		<div style="height:30px"><a style="" href=""><img style="vertical-align:middle;height:20px" height="20" src="{{MEDIA_URL}}images_portal/icon_grafico.jpg" />  100 votos</a></div>
