@@ -11,7 +11,7 @@ def votar(request, enquete_id):
         escolha.votos += 1
         escolha.save() 
     
-    resposta = "<html><body><p><p></body></html>"
+    resposta = "<html><body><p>Parabens voce votou<p></body></html>"
     return HttpResponse(resposta)
 
 def relatorio(request, enquete_id):

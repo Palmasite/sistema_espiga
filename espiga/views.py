@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template import RequestContext
 from datetime import datetime
 from django.utils import simplejson
@@ -9,9 +9,15 @@ from noticia.models import Noticia
 from bancoimagem.models import BancoImagem, Galeria
 from video.models import Video
 from enquete.models import Enquete, Escolha
+from django.contrib.auth import authenticate, login,logout
+from django.contrib.redirects.models import Redirect
+from urllib2 import HTTPRedirectHandler
 
 def index(request):
-    
+    #verifica se ta authenticado
+    if request.user.is_authenticated():
+         auth = request.user
+             
     outras_noticias  = Noticia.objects.filter(boo_ativo = True)[:4]
     
     lista_galeria = Galeria.objects.all()[:3]
@@ -23,3 +29,20 @@ def index(request):
     enquete_esolhas =  Escolha.objects.filter(enquete = ultima_enquete)
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 
+def logar(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username,password = password)
+    
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return redirect('/index')
+        else:
+            pass
+    else:
+        pass
+
+def sair(request):
+    logout(request)
+    redirect('/index')

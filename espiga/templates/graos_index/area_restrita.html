@@ -2,13 +2,20 @@
 	
 	<h2>Area Restrita</h2>
 	<div class="dados">
-		<span>Por favor entre com os seus dados pessoais</span>
-		<form method="POST" action="/logar">
-			<input name="usuario" type="text" />
-			<input name="senha" type="password" />
-			<input type="image" src="images_portal/entrar.jpg" value="Entrar"/>
+		{% if not auth %}
+		<span>Por favor entre com os seus dados pessoais {{menssage}}</span>
+		<form method="POST" action="/logar/">
+			 {% csrf_token %}
+			<input name="username" type="text" />
+			<input name="password" type="password" />
+			<input type="submit" src="images_portal/entrar.jpg" value="Entrar"/>
 		</form>
 		<a href="lose_pass">Esqueci minha senha</a>
+		
+		{% else %}
+			SEJA BEM VINDO <br /><strong>{{auth.username}}</strong>
+			<a href="/logout/">Sair</a>
+		{% endif %}
 		
 	</div>
 </div>
