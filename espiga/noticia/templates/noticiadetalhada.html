@@ -4,36 +4,34 @@
 {% block titulo %}Noticia - {{noticia.vch_titulo}} {%endblock%}
 
 
-{%block conteudo%}{%endblock%}
-
-{% block conteudo_interno %}
-
-
-<div class='noticia_detalhada'>
-	<h3>Notícias Detalhada</h3>
+{%block conteudo%}
+<div id="conteudo_interno">
+	<div class='noticia_detalhada'>
+		<h3>Notícias Detalhada</h3>
+		
+		{%for noticia in noticia_detalhada%}
+			<div id='noticia_date'>{{noticia.dat_noticia|date:"j \de F \de Y" }}</div> 
+			<div id='noticia_titulo'>{{noticia.vch_titulo}}</div>
+			<p>{{noticia.txt_olho|striptags|slice:'220'}}</p>
+			<div id='noticia_conteudo'>{{noticia.txt_noticia|safe}}</div>
+			<div id='noticia_autor'>{{noticia.vch_autor|safe}}</div>
+			
+		{%endfor%}
 	
-	{%for noticia in noticia_detalhada%}
-		<div id='noticia_date'>{{noticia.dat_noticia|date:"j \de F \de Y" }}</div> 
-		<div id='noticia_titulo'>{{noticia.vch_titulo}}</div>
-		<p>{{noticia.txt_olho|striptags|slice:'220'}}</p>
-		<div id='noticia_conteudo'>{{noticia.txt_noticia|safe}}</div>
-		<div id='noticia_autor'>{{noticia.vch_autor|safe}}</div>
-		
-	{%endfor%}
-
+	</div>
+	
+	<ul class='noticias_relacionadas'>
+		<h3>Notícias Relacionadas</h3>
+		{%for noticia in noticias_relacionadas%}
+		<li><a href="{% url noticia.views.detalhar_noticia noticia_id=noticia.int_idnoticia %}">
+		<div class="date">{{noticia.dat_noticia|date:"d \d\e F \d\e Y"}}</div> 
+		<div class="conteudo"><h4> {{ noticia.vch_titulo|striptags|slice:'85'}} 
+			
+			</h4>
+			</div>
+		<a/>{%endfor%}</li>
+	</ul>
 </div>
-
-<ul class='noticias_relacionadas'>
-	<h3>Notícias Relacionadas</h3>
-	{%for noticia in noticias_relacionadas%}
-	<li><a href="{% url noticia.views.detalhar_noticia noticia_id=noticia.int_idnoticia %}">
-	<div class="date">{{noticia.dat_noticia|date:"d \d\e F \d\e Y"}}</div> 
-	<div class="conteudo"><h4> {{ noticia.vch_titulo|striptags|slice:'85'}} 
-		
-		</h4>
-		</div>
-	<a/>{%endfor%}</li>
-</ul>
 {% endblock %}
 
 {% block direita %}
