@@ -36,10 +36,10 @@ ul{list-style:none}
 #cabecalho{width:990px;height: 20px;background: #845768;margin:0 auto;text-align: right;padding: 5px ;background: url("../images_portal/head_bg.png")}
 #menu{width:100%;height: 50px;background:#435674;text-align: center}
 #fullbanner{width:1000px;height:100px;background:#458675;margin:0px auto 10px auto }
-#content{width:1000px;background:#378264;margin:0 auto}
+#content{width:1000px;margin:0 auto}
 #coluna-esquerda{width:200px;float:left}
 #conteudo{height:500px;float:left;margin: 0 10px;padding:10px;}
-#conteudo_interno{height:500px;background:#589456;float:left}
+#conteudo_interno{height:500px;float:left;width:757px;border: solid 1px #EAEAEA;background:#f5f5f5;text-align: left}
 #coluna-direita{width:200px;height:500px;float:left}
 
 #rodape{width:100%;height:150px;background:url("../images_portal/rodape_bg.png") #459 repeat-x;float:left}
@@ -143,3 +143,71 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 .noticia_destaque a#ctr_prev{}
 .noticia_destaque a#ctr_next{}
 .destaque_conteudo span{width:450px;display: inline-block}
+
+
+
+/*--------------warley ---------------- */
+/* noticia_destaque*/
+.outras_noticias{float:left;display:inline;margin:20px;width: 95%}
+.outras_noticias h3{border-left:solid 5px #123345;padding:5px;background-color: #EEEEEE;}
+.outras_noticias ul{list-style: none;}
+.outras_noticias li{margin:5px}
+.outras_noticias h4{color: #666666;font-size:12px}
+.outras_noticias .date { 
+	background-color: #EEEEEE;
+    border-right: 5px solid #CCCCCC;
+    float:left;
+    color: #666666;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-right: 10px;
+    padding: 5px 0;
+    text-align: center;
+    width: 140px;}
+
+.outras_noticias .conteudo{height: 22px;}
+
+
+/* noticia detalhadas */
+
+.noticia_detalhada{margin: 20px}
+.noticia_detalhada h3{border-left:solid 5px #123345;padding:5px;background-color: #EEEEEE;}
+.noticia_detalhada p {color: #666;margin-bottom: 20px}
+#noticia_date{font-size:10px;margin: 5px}
+#noticia_titulo{font-size:15px; font-weight: bold}
+#noticia_conteudo{margin:5px}
+#noticia_autor{text-align: right;}
+
+
+
+
+/* noticia RELACIONADAS */
+
+.noticias_relacionadas{float:left;display:inline;margin:20px;width: 95%}
+.noticias_relacionadas h3{border-left:solid 5px #123345;padding:5px;background-color: #EEEEEE;}
+.noticias_relacionadas ul{list-style: none;}
+.noticias_relacionadas li{margin:5px}
+.noticias_relacionadas h4{color: #666666;font-size:12px}
+.noticias_relacionadas .date { 
+	background-color: #EEEEEE;
+    border-right: 5px solid #CCCCCC;
+    float:left;
+    color: #666666;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-right: 10px;
+    padding: 5px 0;
+    text-align: center;
+    width: 140px;}
+
+.noticias_relacionadas .conteudo{height: 22px;}
+
+/* formulario de noticias*/
+#noticia_formbusca h3{margin-bottom:20px;border-left:solid 5px #123345;padding:5px;background-color: #EEEEEE;}
+#noticia_formbusca {margin: 20px 20px 10px 20px}
+
+
+
+

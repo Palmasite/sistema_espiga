@@ -41,7 +41,7 @@ class BancoImagem(models.Model):
     ModuloNoticia = 1
     int_idbancoimagem = models.AutoField(primary_key = True)
     vch_titulo = models.CharField("Título Foto", max_length = 250)
-    img_foto = ImageWithThumbsField(verbose_name = "Foto", upload_to = upload_to_foto, sizes = ((72,72),(620,317)))
+    img_foto = ImageWithThumbsField(verbose_name = "Foto", upload_to = upload_to_foto, sizes = ((150,85),(800,600)))
     img_miniatura = models.CharField(max_length = 100, null = True, blank = True)
     dat_foto = models.DateTimeField("Data Foto", default = datetime.now)
     vch_fotografo = models.CharField("Fotógrafo", max_length = 250, null = True, blank = True)
@@ -54,9 +54,9 @@ class BancoImagem(models.Model):
         foto = str(self.img_foto)        
         f = str(foto).split('.')  
         """ Renomeia img_foto"""    
-        self.img_foto = f[0]+'.620x317.'+f[1]
+        self.img_foto = f[0]+'.800x600.'+f[1]
         """ Renomeia img_miniatura"""    
-        self.img_miniatura = f[0]+'.72x72.'+f[1]
+        self.img_miniatura = f[0]+'.150x85.'+f[1]
         super(BancoImagem, self).save()
         """ Apaga a foto original da pasta """
         os.remove(settings.MEDIA_ROOT+'/'+foto)

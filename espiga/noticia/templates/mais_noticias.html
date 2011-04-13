@@ -1,31 +1,58 @@
 {% extends "layout.html" %}
 
-
 {% block titulo %} mais noticias {%endblock%}
+
+{%block conteudo%}{%endblock%}
 
 {% block conteudo_interno %}
 
 {% load nomemes %}
-	<ul class="outras_noticias">	
-		{% for mes in lista_noticias_mes %}
+
+
+	
+	
+<div id='noticia_formbusca'>
+	
+	<h3> Buscar notícia </h3>
+	<form name="noticia_buscar" method="GET" action="/espiga/noticia/buscarnoticia/">
 		
-		<div class="box_noticias">
-		<h1>{{mes.month|mes}}/{{mes.year}}</h1>	
-			{% for mais_noticia in lista_mais_noticias %}
-			    {%ifequal mais_noticia.dat_noticia.year mes.year%}
-				{%ifequal mais_noticia.dat_noticia.month mes.month%}			
-				<li class="{% cycle 'linha1' 'linha2' %}"><a href="{% url noticia.views.detalhar_noticia noticia_id=mais_noticia.int_idnoticia %}">
-					<h3>{{mais_noticia.dat_noticia|date:"d/m/y"}} - {{ mais_noticia.vch_titulo|safe}}</h3>
-				</a></li>
-				{% endifequal %}
-				{% endifequal %}
-			{% endfor %}
+		<input type="text" id='busca' name='buscar' />
+		<input type="submit" value="Buscar"></>
+		
+	</form>
+	
+</div>
+
+
+
+
+<ul class="outras_noticias">
+	{% for mes in lista_noticias_mes %}
+
+	<div class="box_noticias">
+		<h3>{{mes.month|mes}}/{{mes.year}}</h3>
+		{% for mais_noticia in lista_mais_noticias %}
+		{%ifequal mais_noticia.dat_noticia.year mes.year%}
+		{%ifequal mais_noticia.dat_noticia.month mes.month%}
+		<li>
+			<a href="{% url noticia.views.detalhar_noticia noticia_id=mais_noticia.int_idnoticia %}">
+			<div class="date">
+				{{mais_noticia.dat_noticia|date:"d \d\e F \d\e Y"}}
 			</div>
-		{%endfor%}
-	</ul>
-
+			<div class="conteudo">
+				<h4>
+				{{ mais_noticia.vch_titulo|striptags|slice:'85'}}
+			
+				</h4>
+			</div>
+			</a>
+		</li>
+		{% endifequal %}
+		{% endifequal %}
+		{% endfor %}
+	</div>
+	{%endfor%}
+</ul>
 {% endblock %}
 
-{% block direita %}
-
-{% endblock %}
+{% block direita %}{% endblock %}
