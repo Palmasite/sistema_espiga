@@ -3,7 +3,7 @@
 import os, platform
 PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 MEDIA_ROOT_PATH = PROJECT_ROOT_PATH
-MEDIA_ROOT_URL = '/espiga/'
+MEDIA_ROOT_URL = '/'
 MEDIA_ROOT_URL_ADMIN = '/'
 
 LOCAL = True
@@ -42,7 +42,7 @@ TIME_ZONE = 'America/Araguaina'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'pt-br'
 
-SITE_ID = 2
+SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -74,7 +74,7 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX =  MEDIA_ROOT_URL + 'media/admin_media1.3/'
+ADMIN_MEDIA_PREFIX =  MEDIA_ROOT_URL + 'admin_media/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (

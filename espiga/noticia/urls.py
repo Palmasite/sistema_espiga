@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     #(r'^mais/(?P<secretaria_id>\d+)/$', 'noticia.views.mais_noticias'),
     (r'^detalhar/(?P<noticia_id>\d+)/$', 'noticia.views.detalhar_noticia'),
     (r'^mais/$',mais_noticias),
-    #(r'^buscar/$', 'noticia.views.buscar'),
+    (r'^buscarnoticia/$', 'noticia.views.buscar_noticia'),
     #(r'^buscadocumento/$', 'noticia.views.frmbusca_arquivo'),
     #(r'^buscalei/$', 'noticia.views.frmbusca_lei'),    
     #(r'^buscaarquivolei/$', 'noticia.views.busca_lei_arquivo')

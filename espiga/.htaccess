@@ -1,1 +1,0 @@
-WSGIScriptAlias /espiga "/var/www/django/projects/sistema_espiga/espiga/deploy/default.wsgi
