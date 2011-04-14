@@ -32,11 +32,12 @@ def index(request):
 def logar(request):    
     user = request.POST['username']
     passw = request.POST['password']        
-    user_login = authenticate(user = user,password =passw)
-    if request.is_ajax():    
+    user_login = authenticate(user = user,password =passw)    
+    
+    if request.is_ajax():
         pass
-    return HttpResponse(user)
-            
+        return HttpResponse(user)
+
 def sair(request):
     logout(request)
     return redirect('/index')
