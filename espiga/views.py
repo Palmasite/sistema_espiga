@@ -29,20 +29,14 @@ def index(request):
     enquete_esolhas =  Escolha.objects.filter(enquete = ultima_enquete)
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 
-def logar(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username,password = password)
-    
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            return redirect('/index')
-        else:
-            pass
-    else:
+def logar(request):    
+    user = request.POST['username']
+    passw = request.POST['password']        
+    user_login = authenticate(user = user,password =passw)
+    if request.is_ajax():    
         pass
-
+    return HttpResponse(user)
+            
 def sair(request):
     logout(request)
     return redirect('/index')

@@ -4,7 +4,6 @@
 	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>{%  block titulo %}espiga.com{% endblock %}</title>
 		<link rel="stylesheet" href="{{MEDIA_URL}}css/layout.css" type="text/css" media="screen" />
-		<link rel="stylesheet" type="{{MEDIA_URL}}text/css" href="scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 		<link rel="shortcut icon" href="favicon.ico" />
 		
 		{% block includecss %}{%endblock%}
@@ -19,7 +18,7 @@
 					{% block cabecalho %}{% endblock %}
 				</div>
 				<div id="logo">
-					<img src="images_portal/logo.jpg">
+					<img src="{{MEDIA_URL}}images_portal/logo.jpg">
 					</img>
 				</div>
 
@@ -90,7 +89,7 @@
 		</div>
 		<div id="rodape">
 			<div id="image_rodape">
-				<img src="images_portal/logo.jpg" />
+				<img src="{{MEDIA_URL}}images_portal/logo.jpg" />
 			</div>
 			<div id="rodape_palmasite">
 				{% block rodape %}
@@ -102,9 +101,11 @@
 	</body>
 	
 
-	<script type="text/javascript" src="{{MEDIA_URL}}/js/galeria_galleriffic_jquery/jquery-1.3.2.js">
-	</script>
-	{%block includejs%}{%endblock%}
+	<script type="text/javascript" src="{{MEDIA_URL}}/js/galeria_galleriffic_jquery/jquery-1.3.2.js"></script>
+	
+	{%block includejs%}
+		<script type="text/javascript" src="{{MEDIA_URL}}/js/paginas_internas/index.js"></script>
+	{%endblock%}
 	
 	{% block scriptjs%}{% endblock %}	
 
