@@ -1,0 +1,7 @@
+{% if publicidade_direita %}
+	{% for banner in publicidade_direita%}
+		<div class="banner_coluna"> 
+			<a href=""><img src="{{MEDIA_URL}}{{banner.img_foto}}" /></a>
+		</div>
+	{%endfor%}
+{%endif%}

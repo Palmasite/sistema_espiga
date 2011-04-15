@@ -12,7 +12,6 @@ class Galeria(models.Model):
     titulo = models.CharField('Titulo', max_length=200, )
     descricao = models.CharField(u'Descrição', max_length=500, null=True, blank=True)
     
-    
     def __unicode__(self):
         return unicode(self.descricao)
     class Meta:

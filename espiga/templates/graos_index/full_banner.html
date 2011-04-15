@@ -1,0 +1,9 @@
+{% if publicidade_full_banner %}
+	<ul id="full_banner">
+		{% for banner in publicidade_full_banner%}
+			<li class="banner_image" id ="{{forloop.counter }}"> 
+				<a href=""><img src="{{MEDIA_URL}}{{banner.img_foto}}" /></a>
+			</li>
+		{%endfor%}
+	</div>
+{%endif%}

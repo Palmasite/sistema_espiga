@@ -6,13 +6,12 @@ from django.conf import settings
 
 import os
 
-
 class Publicidade(models.Model):
-    list_tipo = (('1','Topo'),('2','Direita'),('3',u'Rodapé'),('4','Esquerda'),)
+    list_tipo = (('1','Topo'),('2','Direita'),('3',u'Rodapé'),('4','Esquerda'),('5','fullbanner'))
     idpublicidade = models.AutoField(primary_key = True)
     nome = models.CharField("Nome", max_length = 250)
     img_foto = ImageWithThumbsField(verbose_name = "Logomarca", upload_to = "fotopublicidade", sizes = ((180,237),),null = True, blank = True, )
-    tipo = models.IntegerField("Posição no portal",choices = list_tipo,)
+    tipo = models.CharField("Posição no portal",max_length=1,choices = list_tipo,)
     
     def save(self, force_insert=False, force_update=False):
             super(Publicidade, self).save(force_insert, force_update)

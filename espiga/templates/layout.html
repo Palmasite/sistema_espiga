@@ -4,14 +4,18 @@
 	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>{%  block titulo %}espiga.com{% endblock %}</title>
 		<link rel="stylesheet" href="{{MEDIA_URL}}css/layout.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{MEDIA_URL}}css/jquery_ui/jquery-ui-1.8.11.custom.css" type="text/css" media="screen" />
 		<link rel="shortcut icon" href="favicon.ico" />
+		<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery_ui/jquery-ui-1.8.11.custom.min.js"></script>
+	{%block includejs%}
+		<script type="text/javascript" src="{{MEDIA_URL}}/js/paginas_internas/index.js"></script>
 		
+	{%endblock%}
+	
 		{% block includecss %}{%endblock%}
-		
-
 	</head>
 	<body>
-
 		<div id="head">
 			<div id="topo">
 				<div id="cabecalho">
@@ -55,17 +59,19 @@
 				</li>
 			</ul>
 		</div>
-		<div id="fullbanner">
-			{% include "graos_index/fullbanner.html" %}
-		</div>
+		
+			{% include "graos_index/full_banner.html" %}
+		
 		<div id="content">
 			{% block colunaEsquerda %}
 			<div id="coluna-esquerda">
+				{% include "graos_index/banner_esquerda.html" %}
 				{% include "graos_index/area_restrita.html" %}
 				{% include "graos_index/videos_ligth.html" %}
 				{% include "graos_index/netWorks_ligth.html" %}
 			</div>
 			{% endblock %}
+			
 			{% block conteudo %}
 			<div id="conteudo">
 				
@@ -75,15 +81,14 @@
 				
 			</div>
 			{% endblock %}
-						
+			
 			{% block direita %}
 			<div id="coluna-direita">
-				{% include "graos_index/banner_200_200.html" %}
-				{% include "graos_index/banner_200_100.html" %}
-				{% include "graos_index/banner_200_100.html" %}
+				{% include "graos_index/banner_direita.html" %}
 				{% include "graos_index/enquete.html" %}
 			</div>
 			{% endblock %}
+			
 			<div id="aux">
 			</div>
 		</div>
@@ -101,11 +106,6 @@
 	</body>
 	
 
-	<script type="text/javascript" src="{{MEDIA_URL}}/js/galeria_galleriffic_jquery/jquery-1.3.2.js"></script>
-	
-	{%block includejs%}
-		<script type="text/javascript" src="{{MEDIA_URL}}/js/paginas_internas/index.js"></script>
-	{%endblock%}
 	
 	{% block scriptjs%}{% endblock %}	
 
