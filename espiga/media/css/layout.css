@@ -39,17 +39,11 @@ a{text-decoration:none;color:#000}
 #content{width:1000px;background:#378264;margin:0 auto}
 #coluna-esquerda{width:200px;float:left}
 #conteudo{height:500px;float:left;margin: 0 10px;padding:10px;}
-<<<<<<< HEAD
 #conteudo_interno{padding:10px;float:left;width:768px;border: solid 1px #EAEAEA;background:#f5f5f5;text-align: left;margin-left:10px}
 #conteudo_interno h3{border-left:solid 5px #123345;padding:5px;background-color: #EEEEEE;}
 #conteudo_geral{float:left;width:1000px;border: solid 1px #EAEAEA;background:#f5f5f5;text-align: left;margin-left:10px}
-
-
 #coluna-direita{width:200px;height:500px;float:left}
-=======
-#conteudo_interno{height:500px;background:#589456;float:left}
-#coluna-direita{width:200px;float:left}
->>>>>>> b6b5f493542cda4cc8d0f64006857b1309dc90e7
+
 
 #rodape{width:100%;height:150px;background:url("../images_portal/rodape_bg.png") #459 repeat-x;float:left}
 #image_rodape{width:1000px;height:85%;margin:0 auto;}
@@ -161,7 +155,7 @@ ul.noticias_lista li span{font-weight: bold}
 .noticia_destaque a#ctr_prev{}
 .noticia_destaque a#ctr_next{}
 .destaque_conteudo span{width:450px;display: inline-block}
-<<<<<<< HEAD
+
 
 
 
@@ -230,13 +224,9 @@ ul.noticias_lista li span{font-weight: bold}
 
 /* noticia RELACIONADAS */
 
-.galeria{float:left;margin: 10px;width: 300px; }
-.foto_galeria img{width: 100px;float:left;margin-right: -40px;}
-.galeria:hover img{margin-right:2px; }
+.galeria{float:left;margin: 10px;width: 235px; }
+.foto_galeria img{width: 100px;float:left;}
+.foto_galeria {width: 100px;background:#fff;border:solid 1px #666;float:left;padding:5px;margin-right: -80px;box-shadow: 5px 5px 10px #666;-webkit-box-shadow: 5px 5px 10px #666;-moz-box-shadow: 5px 5px 10px #666;}
+.descricao_galeria{margin: 7px;}
 
 
-
-
-
-=======
->>>>>>> b6b5f493542cda4cc8d0f64006857b1309dc90e7

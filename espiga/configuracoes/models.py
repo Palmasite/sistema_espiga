@@ -3,14 +3,18 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from thumbs import ImageWithThumbsField
 import os
+from operator import itemgetter 
+from itertools import groupby 
 
 def modulos():
     list_modulos = ContentType.objects.all().order_by('app_label')
     modulos = ()
     for l in list_modulos:
         modulos = modulos + ((l.app_label,l.app_label),)
-    #raise Exception(modulos)
-    return modulos
+    
+    # Cremover itens repetido de uma lista 
+    modulo = list(map(itemgetter(0), groupby(modulos)))
+    return modulo
 
 class Modulo(models.Model):
     listmodulos = modulos()
