@@ -3,7 +3,7 @@
 import os, platform
 PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 MEDIA_ROOT_PATH = PROJECT_ROOT_PATH
-MEDIA_ROOT_URL = '/espiga/'
+MEDIA_ROOT_URL = '/'
 MEDIA_ROOT_URL_ADMIN = '/'
 
 LOCAL = True
@@ -74,7 +74,7 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX =  MEDIA_ROOT_URL + 'media/admin_media1.3/'
+ADMIN_MEDIA_PREFIX =  MEDIA_ROOT_URL + 'admin_media/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -106,7 +106,7 @@ AUTH_PROFILE_MODULE = 'espiga.perfilinicial'
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
