@@ -16,6 +16,10 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     (r'^index/', 'views.index'),
+    (r'^logar$', 'views.logar'),
+    (r'^logout/', 'views.sair'),
+    (r'^recuperar_senha/$', 'password_reset', {'template_name': 'accounts/registration/password_reset_form.html', 'email_template_name':'accounts/registration/password_reset_email.html', 'post_reset_redirect':'accounts/login/'}), 
+    
     
     (r'^noticia/', include('noticia.urls')),
     (r'^bancoimagem/', include('bancoimagem.urls')),
