@@ -1,26 +1,39 @@
 
+
+{% extends 'layout.html' %}
 {%  block titulo %}Galeria de imagens{% endblock %}
 
 
-{%block conteudo_interno%}
+{% block direita %}{% endblock %}
 
-{% for galeria in lista_galeria %}
-	<br><br/>
-	Titulo:{{galeria.titulo}}</br>
-	Descricao:{{galeria.descricao}}
-	<br><br/>
-	{% for imagem in lista_imagem%}
+
+{%block conteudo%}
+
+	<div id="conteudo_interno">
+			<h3>Galeria de imagens</h3>
 	
-		{% if imagem.galeria.idgaleria == galeria.idgaleria and imagem.capa_album%}
-			<a href="{% url bancoimagem.views.imagem_aleria idgaleria=imagem.galeria.idgaleria %}">
-			<img src="{{ MEDIA_URL }}{{ imagem.img_miniatura }}" alt="{{ imagem.vch_titulo }}" title="{{ imagem.vch_titulo }}" />
-			</a>
-		
-		{% endif %}
-
-	{% endfor%}
-{% endfor %}
-
+			{% for galeria in lista_galeria %}
+				<div class="galeria">
+				<div class="descricao_galeria">
+					Titulo:{{galeria.titulo}}</br>
+					Descricao:{{galeria.descricao}}
+				
+				</div>
+				{% for imagem in lista_imagem%}
+				
+					{% if imagem.galeria.idgaleria == galeria.idgaleria and imagem.capa_album%}
+							<div class="foto_galeria">
+								<a href="{% url bancoimagem.views.imagem_aleria idgaleria=imagem.galeria.idgaleria %}">
+									<img src="{{ MEDIA_URL }}{{ imagem.img_miniatura }}" alt="{{ imagem.vch_titulo }}" title="{{ imagem.vch_titulo }}" />
+								</a>
+							</div>
+					{% endif %}
+			
+				{% endfor%}
+			</div>
+			{% endfor %}
+			
+	</div>
 
 {%endblock%}
 

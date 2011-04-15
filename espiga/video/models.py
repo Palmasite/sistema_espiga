@@ -10,7 +10,7 @@ from django import forms
 class Video(models.Model):    
     int_idvideo = models.AutoField(primary_key=True)
     vch_titulo = models.CharField("Nome video", max_length=500)
-    vch_url = models.CharField("URL video", max_length=500)
+    vch_url = models.CharField("URL video", max_length=500, help_text=u"Preferência no tamanho do vídeo 853 X 510.",)
     dat_dataenvio = models.DateTimeField("Data Envio", default=datetime.now())
     boo_ativo = models.BooleanField("Ativo", default=True)
     img_foto = ImageWithThumbsField("Foto", upload_to = 'fotovideo/', sizes = ((143,87),), null = True, blank = True,)
