@@ -1,14 +1,35 @@
 {% extends 'layout.html' %}
-{% block conteudo_interno %}
-	<form method="POST">
-		{% csrf_token %}
-		{{ form.as_table }}
-		<input type="submit" value="Enviar contato" />
-	</form>
-	{% endblock %}
-	
-	
-{% block direita %}
+{%  block titulo %}Contatos{% endblock %}
+
+{% block conteudo %}
+	<div id="conteudo_interno">
+		
+		
+		<div id="formcontato">
+			<h3>Formulario de contato</h3>
+			<form method="POST">
+				
+				{{ form.as_table }}
+				<input type="submit" value="Enviar contato" />
+			</form>
+		</div>
+		<div id="informacaocontato">
+			<h3>Informações da empresa</h3>
+			
+			{% for empresa in dados_empresa %}
+			
+				{{empresa.descricao|safe}}<br/>
+				{{empresa.mapa|safe}}	
+			
+			{% endfor %}
+			
+			
+		</div>
+		
+		
+	</div>
 
 {% endblock %}
+	
+{% block direita %}{% endblock %}
 

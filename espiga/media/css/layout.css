@@ -27,6 +27,7 @@ section, article, aside, header, footer, nav, dialog, figure {
 }
 ul{list-style:none}
 a{text-decoration:none;color:#000}
+input{border: none;height: 28px}
 
 /* 
  * Estrutura
@@ -210,11 +211,37 @@ ul.noticias_lista li span{font-weight: bold}
 #noticia_formbusca {margin: 20px 20px 10px 20px}
 
 
-/* noticia RELACIONADAS */
+/* Galeria de imagens */
 
 .galeria{float:left;margin: 10px;width: 235px; }
 .foto_galeria img{width: 100px;float:left;}
 .foto_galeria {width: 100px;background:#fff;border:solid 1px #666;float:left;padding:5px;margin-right: -80px;box-shadow: 5px 5px 10px #666;-webkit-box-shadow: 5px 5px 10px #666;-moz-box-shadow: 5px 5px 10px #666;}
 .descricao_galeria{margin: 7px;}
+
+
+/* Galeria de videos  */
+
+.galeria_video{float:left;margin: 10px;width: 235px; }
+.foto_galeria_video img{width: 100px;float:left;}
+.foto_galeria_video {width: 100px;background:#000;border:solid 1px #666;float:left;padding:5px;margin-right: -80px;box-shadow: 5px 5px 10px #666;-webkit-box-shadow: 5px 5px 10px #666;-moz-box-shadow: 5px 5px 10px #666;}
+.descricao_galeria_video{margin: 7px;}
+
+/*  Contato */ 
+
+#formcontato {width: 345px;float:left;padding: 10px}
+#formcontato input[type = "text"]{width: 345px;}
+#formcontato select{width: 345px;}
+#formcontato ul.errorlist{color: #C30}
+#formcontato form{margin-top: 20px}
+
+
+
+#informacaocontato{padding: 10px;width: 363px;float:left}
+#informacaocontato iframe{width: 363px}
+#informacaocontato h3{margin-bottom: 20px}}
+
+
+
+
 
 

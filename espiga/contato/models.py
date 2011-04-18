@@ -1,3 +1,5 @@
+#-*- coding:utf-8 -*-
+
 from django.db import models
 
 # Create your models here.
@@ -14,7 +16,6 @@ class Departamento(models.Model):
         ordering = ('descricao',)
         
     
-    
 class Contato(models.Model):
     idcontato = models.AutoField(primary_key=True)
     nome = models.CharField('Nome',max_length=250)
@@ -25,14 +26,12 @@ class Contato(models.Model):
     def __unicode__(self):
         return unicode(self.nome)
     
+
+class DadosEmpresa(models.Model):
+    iddadoempresa = models.AutoField(primary_key=True)
+    descricao = models.TextField(u"Descrição")
+    mapa = models.CharField('Link Mapa',max_length=500)
+    def __unicode__(self):
+        return unicode(self.descricao)
+
     
-    
-    
-
-
-
-
-'''
-Nome Cidade/UF Email Assunto Departamento Mensagem 
-
-'''

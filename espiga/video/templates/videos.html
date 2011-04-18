@@ -10,22 +10,49 @@
 {%endblock%}
 
 
+
 {%block conteudo%}
 
 	<div id="conteudo_interno">
 		<div id="content">
 			<h3>Vídeos</h3>
 	
-			{% for video in lista_imagem_video %}						
-				<div class="galeria">
-					<div class="descricao_galeria">{{ video.1 }} </div>
-					<div class="foto_galeria">
-						<a class="video_frame" href="{%url video.views.galeria_video video_id=video.0%}">
-							<img src="{{ MEDIA_URL }}{{ video.2}}" alt="{{ imagem.1 }}" />			
-						</a>
-						
-					</div>
+			{% for video in lista_imagem_video %}
+			
+			
+			
+			{% if video.2 %}
+			
+			
+				<div class="galeria_video">
+				<div class="descricao_galeria_video">{{ video.1 }} </div>
+				<div class="foto_galeria_video">
+					<a class="video_frame" href="{%url video.views.galeria_video video_id=video.0%}">
+						<img src="{{ MEDIA_URL }}{{ video.2}}" alt="{{ imagem.1 }}" />			
+					</a>
+					
 				</div>
+				</div>
+				
+				
+				{% else %}
+				
+								<div class="galeria">
+				<div class="descricao_galeria_video">{{ video.1 }} </div>
+				<div class="foto_galeria_video">
+					<a class="video_frame" href="{%url video.views.galeria_video video_id=video.0%}">
+						
+						
+						<img src="http://i1.ytimg.com/vi/{{video.3}}/default.jpg" alt="{{ imagem.1 }}" />			
+					</a>
+					
+				</div>
+				</div>
+				
+				
+	
+			{% endif %}						
+
 				
 	
 			{% endfor %}
@@ -52,11 +79,13 @@
 				*/
 				$(".video_frame").fancybox({
 					'width'				: '50%',
-					'height'			: '83%',
+					'height'			: '76%',
 					'autoScale'			: false,
-					'transitionIn'		: 'none',
-					'transitionOut'		: 'none',
-					'type'				: 'iframe'
+					'transitionIn'		: 'elastic',
+					'transitionOut'		: 'elastic',
+					'type'				: 'iframe',
+					'overlayOpacity'	: '0.9',
+					'overlayColor'	    : '#000'
 				});
 	
 				

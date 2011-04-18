@@ -1,4 +1,4 @@
-#Fri Apr 15 08:06:16 BRT 2011
+#Mon Apr 18 11:02:04 BRT 2011
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=c78a7def9922b5fe3750780aa1506c4e75138c21
@@ -6,6 +6,8 @@ eclipse.preferences.version=1
 encoding//espiga/admin_utils.py=utf-8
 encoding//espiga/bancoimagem/admin.py=utf-8
 encoding//espiga/bancoimagem/urls.py=utf-8
+encoding//espiga/configuracoes/admin.py=utf-8
+encoding//espiga/contato/models.py=utf-8
 encoding//espiga/enquete/admin.py=utf-8
 encoding//espiga/enquete/models.py=utf-8
 encoding//espiga/enquete/urls.py=utf-8
@@ -16,6 +18,7 @@ encoding//espiga/noticia/urls.py=utf-8
 encoding//espiga/noticia/views.py=utf-8
 encoding//espiga/perfilinicial/admin.py=utf-8
 encoding//espiga/publicidade/models.py=utf-8
+encoding//espiga/servico/models.py=utf-8
 encoding//espiga/upload/admin.py=utf-8
 encoding//espiga/upload/forms.py=utf-8
 encoding//espiga/upload/models.py=utf-8

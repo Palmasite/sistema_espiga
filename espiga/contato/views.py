@@ -3,9 +3,14 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from contato.forms import FormContato
 from django.core.mail import send_mail
+from contato.models import DadosEmpresa
 
 
 def contato(request):
+    
+    dados_empresa = DadosEmpresa.objects.all()
+    
+    
     if request.method == 'POST':
         form = FormContato(request.POST)
         if form.is_valid():
