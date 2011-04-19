@@ -70,9 +70,9 @@ function full_banner_fade(){
 var noticia_destaque = $(".noticia_destaque").size();
 var noticia_destaque_id = 1;
 $('#noticia_destaque_'+noticia_destaque_id).fadeIn();
-var interval_noticia = setInterval("noticia_destaque_fade()",10000);
+var interval_noticia = setInterval("noticia_destaque_proximo()",10000);
 
-function noticia_destaque_fade(){
+function noticia_destaque_proximo(){
 	$('#noticia_destaque_'+noticia_destaque_id).fadeOut();
 	
 	if (noticia_destaque_id >= noticia_destaque){
@@ -81,9 +81,18 @@ function noticia_destaque_fade(){
 		noticia_destaque_id = noticia_destaque_id+1;
 	}
 	$('#noticia_destaque_'+noticia_destaque_id).fadeIn();
-
 }
 
+function noticia_destaque_anterior(){
+	$('#noticia_destaque_'+noticia_destaque_id).fadeOut();
+	if (noticia_destaque_id < noticia_destaque){
+		noticia_destaque_id = noticia_destaque;
+	}else{
+		noticia_destaque_id = noticia_destaque_id-1;
+	}
+	$('#noticia_destaque_'+noticia_destaque_id).fadeIn();
+
+}
 
 
 

@@ -4,9 +4,9 @@
 			<img width="580" height="230" src="{{MEDIA_URL}}{{noticia.img_foto}}" />
 			<div class="noticia_destaque_descricao"></div>
 			<div class="destaque_conteudo">
-				<a id="ctr_prev">left</a>
+				<a onclick="noticia_destaque_anterior()" id="ctr_prev">left</a>
 					<span>{{noticia.vch_titulo}}</span>
-				<a id="ctr_next">proximo</a>
+				<a onclick="noticia_destaque_proximo()" id="ctr_next">proximo</a>
 			</div>
 	</div>
 {%endfor%}

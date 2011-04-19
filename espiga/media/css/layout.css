@@ -80,6 +80,7 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 /*
  * full banner
  */
+
 #full_banner{margin:0 0 10px 0;position:relative;width:100%;height: 150px;overflow: hidden}
 .banner_image{display:none;position:absolute;width:100%;}
 
@@ -96,14 +97,14 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 .img_video_ligth{width:151px; height: 87px; background:#A02221;padding:2px;overflow: hidden} /* ---------------------------Primeira Cor do sistema*/
 
 /*
- * Videos_full
+ * Fotos_full
  */
-.dados{padding:5px;border:solid 1px #fff;margin-top:10px;text-align:center}
-.img_video_full{width:150px; height: 87px; background:#A02221;padding:2px;overflow: hidden;float:left;margin:10px} /* ---------------------------Primeira Cor do sistema*/
-.img_video_full img{width:145px; height: 77px;margin:4px}
+ 
+.dados{padding:5px;border:solid 1px #fff;margin-top:10px;text-align:center;text-align:center}
+.img_video_full{width:150px; height: 87px; background:#fff;border:solid 1px #333;padding:2px;overflow: hidden;float:left;margin:10px} /* ---------------------------Primeira Cor do sistema*/
+.img_video_full img{width:145px; height: 77px;margin:5px 2px}
 .galeria_full_index{width:170px;float:left;}
 .galeria_full_index span{margin-left:15px;}
-
 
 /*
  * netWorks_ligth
@@ -139,6 +140,10 @@ ul.noticias_lista{list-style: none}
 ul.noticias_lista li{}
 ul.noticias_lista li span{font-weight: bold}  
   
+
+/*Links_rapidos*/
+#links_rapidos{width:90%;margin-top:10px;border:none;height: 25px;background: #ddd;color:#333;}
+
 /* noticia_destaque*/
 #noticia_box{position:relative;height: 220px}
 .noticia_destaque{position:absolute;display: none}
@@ -147,8 +152,6 @@ ul.noticias_lista li span{font-weight: bold}
 .noticia_destaque a#ctr_prev{}
 .noticia_destaque a#ctr_next{}
 .destaque_conteudo span{width:450px;display: inline-block}
-
-
 
 
 /*--------------warley ---------------- */
@@ -238,13 +241,6 @@ ul.noticias_lista li span{font-weight: bold}
 #formcontato form{margin-top: 20px}
 
 
-
 #informacaocontato{padding: 10px;width: 363px;float:left}
 #informacaocontato iframe{width: 363px}
-#informacaocontato h3{margin-bottom: 20px}}
-
-
-
-
-
-
+#informacaocontato h3{margin-bottom: 20px}
