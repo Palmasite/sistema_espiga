@@ -106,6 +106,15 @@ h2{padding:5px 2px;border-left:solid 10px #123345} /* --------------------------
 
 
 /*
+ * servicos_full
+ */
+ 
+.servico_full_index{width:139px;float:left;height: 100px}
+.img_servico_full img{width:87px; height: 68px;margin:4px; border: solid 1px #000; padding: 2px}
+.img_servico_full{width:102px; height: 76px;padding:2px;overflow: hidden;float:left;margin:10px}
+.servico_full_index span{margin:1px;}
+
+/*
  * netWorks_ligth
  */
 
@@ -222,6 +231,9 @@ ul.noticias_lista li span{font-weight: bold}
 .descricao_galeria{margin: 7px;}
 
 
+/* Galeria de imagens index */
+
+
 /* Galeria de videos  */
 
 .galeria_video{float:left;margin: 10px;width: 235px; }
@@ -236,8 +248,6 @@ ul.noticias_lista li span{font-weight: bold}
 #formcontato select{width: 345px;}
 #formcontato ul.errorlist{color: #C30}
 #formcontato form{margin-top: 20px}
-
-
 
 #informacaocontato{padding: 10px;width: 363px;float:left}
 #informacaocontato iframe{width: 363px}
