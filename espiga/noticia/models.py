@@ -11,10 +11,8 @@ from django.conf import settings
 class Categoria(models.Model):
     int_idcategoria = models.AutoField(primary_key=True)
     vch_titulo = models.CharField("Categoria", max_length = 250)
-    
     def __unicode__(self):
         return self.vch_titulo
-    
     class Meta:
         verbose_name = "Categoria"
         

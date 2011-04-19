@@ -17,6 +17,8 @@ from urllib2 import HTTPRedirectHandler
 from django.core import serializers
 from django.utils import simplejson
 
+from link.models import Link, Categoria
+
 def index(request):
     #verifica se ta authenticado
     if request.user.is_authenticated():
@@ -44,6 +46,11 @@ def index(request):
     #enquete
     ultima_enquete = Enquete.objects.latest("id_enquete") 
     enquete_esolhas =  Escolha.objects.filter(enquete = ultima_enquete)
+    
+    #lista servico
+    
+    link_servico_destaque = Link.objects.filter(boo_destaque = True)[:6]
+    
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 
 def logar(request):

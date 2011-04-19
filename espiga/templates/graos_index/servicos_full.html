@@ -1,0 +1,20 @@
+<div class="block_full">
+	
+	<h2>Serviços</h2>
+	{% for servicos in link_servico_destaque %}
+	<div class="servico_full_index">
+		<div class="img_servico_full">			
+			<a target="_blank" href="{{ servicos.vch_link }}">
+				<img src="{{ MEDIA_URL }}{{ servicos.img_foto }}" alt="{{ servicos.vch_nome }}" title="{{ servicos.vch_nome }}" />
+			</a>		
+		</div>
+		<span>{{servicos.vch_nome}}</span>
+	</div>
+	
+	{%endfor%}
+
+		
+	
+	<a href="" class="ver_mais">ver mais +</a>
+	
+</div>
