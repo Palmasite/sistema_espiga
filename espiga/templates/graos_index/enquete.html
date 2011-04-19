@@ -6,13 +6,12 @@
 		<fieldset  id="enquete">
 			<input id="id_enquete" type="hidden" value="{{ultima_enquete.id_enquete}}" />
 			{% for opsao in enquete_esolhas %}
-				<input onclick="escolher(this.value)" type="radio" name="escolha" value="{{opsao.id_escolha}}" />
-				<label>{{opsao.escolha}}</label><br />
+				<input id="radio{{forloop.counter}}" onclick="escolher(this.value)" type="radio" name="escolha" value="{{opsao.id_escolha}}" />
+				<label for="radio{{forloop.counter}}">{{opsao.escolha}}</label><br />
 			{% endfor %}
-<div class="jui">			
-			<button id="votar" onclick="votar()" type="image" src="{{MEDIA_URL}}images_portal/entrar.jpg"/>Votar</button>
-</div>
+			
 		</fieldset>
+			<button id="votar" onclick="votar()" type="image" src="{{MEDIA_URL}}images_portal/entrar.jpg"/>Votar</button>
 		{%endif%}
 		<div style="height:30px"><img onclick="relatorio()" style="vertical-align:middle;height:20px" height="20" src="{{MEDIA_URL}}images_portal/icon_grafico.jpg" />  100 votos</div>
 		

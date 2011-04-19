@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from noticia.models import Noticia
 from bancoimagem.models import BancoImagem, Galeria
 from video.models import Video
+from noticia.models import Noticia
 from enquete.models import Enquete, Escolha
 from publicidade.models import Publicidade
 from django.contrib.auth import authenticate, login,logout
@@ -38,6 +39,8 @@ def index(request):
     publicidade_esquerda = Publicidade.objects.filter(tipo = "4")
     publicidade_full_banner = Publicidade.objects.filter(tipo = "5")
     
+    #noticias_destque
+    noticias_destaque = Noticia.objects.filter(boo_ativo = True).filter(boo_destaque = True);
     #enquete
     ultima_enquete = Enquete.objects.latest("id_enquete") 
     enquete_esolhas =  Escolha.objects.filter(enquete = ultima_enquete)

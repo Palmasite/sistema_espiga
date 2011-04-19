@@ -17,7 +17,7 @@ class Categoria(models.Model):
     
     class Meta:
         verbose_name = "Categoria"
-
+        
 """ Funcao responsavel pela renomeacao da foto que sera inserida no banco """
 def upload_to_foto(instance, name):
     extensao = os.path.splitext(name)[-1]

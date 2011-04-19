@@ -6,13 +6,7 @@
 		<link rel="stylesheet" href="{{MEDIA_URL}}css/layout.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="{{MEDIA_URL}}css/jquery_ui/jquery-ui-1.8.11.custom.css" type="text/css" media="screen" />
 		<link rel="shortcut icon" href="favicon.ico" />
-		<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.js"></script>
-	<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery_ui/jquery-ui-1.8.11.custom.min.js"></script>
-	{%block includejs%}
-		<script type="text/javascript" src="{{MEDIA_URL}}/js/paginas_internas/index.js"></script>
 		
-	{%endblock%}
-	
 		{% block includecss %}{%endblock%}
 	</head>
 	<body>
@@ -105,7 +99,13 @@
 		</div>
 	</body>
 	
-
+	<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery_ui/jquery-ui-1.8.11.custom.min.js"></script>
+	{%block includejs%}
+		<script type="text/javascript" src="{{MEDIA_URL}}/js/paginas_internas/index.js"></script>
+		
+	{%endblock%}
+	
 	
 	{% block scriptjs%}{% endblock %}	
 
