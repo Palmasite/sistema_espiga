@@ -2,7 +2,7 @@
 	
 	<h2>Fotos</h2>
 	{% for galeria in lista_galeria %}
-<<<<<<< HEAD
+
 		{% for imagem in lista_imagem%}
 			{% if imagem.galeria.idgaleria == galeria.idgaleria and imagem.capa_album%}
 				<div class="galeria_full_index">
@@ -17,22 +17,6 @@
 	
 		{% endfor%}
 	{% endfor %}
-=======
-	{% for imagem in lista_imagem%}
-		{% if imagem.galeria.idgaleria == galeria.idgaleria and imagem.capa_album%}
-		<div class="galeria_full_index">
 
-			<div class="img_video_full">
-				<a href="/bancoimagem/imagem/{{galeria.idgaleria}}/">
-				<img src="{{ MEDIA_URL }}{{ imagem.img_miniatura }}" alt="{{ imagem.vch_titulo }}" title="{{ imagem.vch_titulo }}" />
-				</a>
-			</div>
-			<span>{{galeria.titulo|slice:"50"}}</span>
-		</div>
-		{% endif %}
-
-	{% endfor%}
-{% endfor %}
->>>>>>> 51c0a39b9ddc7e685654627197481111a6893fc5
 	<a href="/bancoimagem/galeria/" class="ver_mais">ver mais +</a>
 </div>

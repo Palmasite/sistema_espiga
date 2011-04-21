@@ -1,7 +1,33 @@
+<script type="text/javascript">
+
+	function nav(){
+	   var w = document.linkform.links.selectedIndex;
+	   var url_add = document.linkform.links.options[w].value;
+	   window.location.href = url_add;
+   }
+ 
+</script>
+
 <div class="block_ligth enquete">
 	<h2>Links Rapidos</h2>
-	<select id="links_rapidos">
-		<option>teste</option>
-		<option>teste</option>
-	</select>
+	<FORM NAME="linkform">
+		<select id="links_rapidos" name="links" onchange="nav()">
+			<option>--Links-</option>
+			{% for link in link_rapidos %}
+			<option  VALUE="{{link.vch_link}}">{{link.vch_nome}}</option>
+		
+			{% endfor %}
+			
+		</select>
+	</FORM>
+	
+	{% for link in link_rapidos %}
+		{% if link.img_foto != "" %}
+			
+			<a href="{{link.vch_link}}" target="_blank">
+				<img style="width:150px" src="{{MEDIA_URL}}{{link.img_foto}}"   />
+			</a>
+		{% endif%}
+	{% endfor %}
+	
 </div>

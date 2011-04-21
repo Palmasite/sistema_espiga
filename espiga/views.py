@@ -34,6 +34,20 @@ def index(request):
     #ultimo video
     ultimo_video = Video.objects.all()[:1]
     
+    lista_imagem_video = ()
+    
+    for lv in ultimo_video:
+        video = lv.vch_url.split(" ")
+        idvideo = video[6].split("/")
+        idfoto=idvideo[4][:-1]
+        
+        lista_imagem_video = lista_imagem_video + ((lv.int_idvideo,lv.vch_titulo ,lv.img_foto,idfoto,),)
+        
+    
+    
+    
+    
+    
     #publicidade
     publicidade_topo = Publicidade.objects.filter(tipo = "1")
     publicidade_direita = Publicidade.objects.filter(tipo = "2")
@@ -47,9 +61,11 @@ def index(request):
     ultima_enquete = Enquete.objects.latest("id_enquete") 
     enquete_esolhas =  Escolha.objects.filter(enquete = ultima_enquete)
     
-    #lista servico
+    #lista Links
     
-    link_servico_destaque = Link.objects.filter(boo_destaque = True)[:6]
+    link_servico_destaque = Link.objects.filter(boo_destaque = True).filter(categoria = 3)[:6]# para servicos
+    link_rapidos = Link.objects.filter(categoria = 4) #links rapidos
+    link_rapidos_destaque = Link.objects.filter(categoria = 1) #links rapidos destaque
     
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 

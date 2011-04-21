@@ -1,17 +1,33 @@
+
 <div class="block_ligth">
-	
 	<h2>Vídeos</h2>
 	<div class="dados">
-		{% for video in ultimo_video %}
-		<div class="img_video_ligth">
-			<a href="/video/video/{{video.int_idvideo}}"><img src="{{MEDIA_URL}}{{video.img_foto}}" /><!--{{ imgVideoLigth }}--></a>
-		</div>
-		<span>
-			{{video.vch_titulo}}
-		</span>
-		{% endfor%}
+		{% for video in lista_imagem_video %}
+			{% if video.2 %}
+					<div class="img_video_ligth">
+						<a class="img_video_ligth" href="{%url video.views.galeria_video video_id=video.0%}">
+							<img src="{{ MEDIA_URL }}{{ video.2}}" alt="{{ imagem.1 }}" />			
+						</a>
+						
+					</div>				
+				{% else %}		
+					<div class="img_video_ligth">
+						<a class="video_frame" href="{%url video.views.galeria_video video_id=video.0%}">
+							<img src="http://i1.ytimg.com/vi/{{video.3}}/default.jpg" alt="{{ imagem.1 }}" />			
+						</a>
+					</div>
+	
+			{% endif %}						
+			{% endfor %}
 		
 	</div>
-	<a href="">veja mais +</a>
+	<a href="/video/videos/">veja mais +</a>
 	
 </div>
+
+
+
+
+
+
+

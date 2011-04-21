@@ -1,0 +1,10 @@
+{% for link in link_rapidos_destaque%}
+	{% if link.img_foto != "" %}
+		
+		<a href="{{link.vch_link}}" target="_blank">
+			<img src="{{MEDIA_URL}}{{link.img_foto}}"   />
+		</a>
+	{% endif%}
+{%endfor%}
+
+
