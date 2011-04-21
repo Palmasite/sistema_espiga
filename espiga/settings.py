@@ -42,7 +42,7 @@ TIME_ZONE = 'America/Araguaina'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'pt-br'
 
-SITE_ID = 1
+SITE_ID = 3
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -138,7 +138,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'django.contrib.flatpages',
+    #'django.contrib.flatpages',
     'django.contrib.comments',
     'noticia',
     'bancoimagem',

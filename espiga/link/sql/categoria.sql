@@ -1,5 +1,5 @@
-insert into link_categoria (vch_titulo) values ('Direita');
+insert into link_categoria (vch_titulo) values ('Destaque');
 insert into link_categoria (vch_titulo) values ('Esquerda');
-insert into link_categoria (vch_titulo) values ('Centro');
-insert into link_categoria (vch_titulo) values ('Links Rapidos');
+insert into link_categoria (vch_titulo) values ('Servico');
+insert into link_categoria (vch_titulo) values ('Rapidos');
 

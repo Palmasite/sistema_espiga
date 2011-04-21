@@ -266,3 +266,14 @@ ul.eventos_lista li span{font-weight: bold}
 #informacaocontato{padding: 10px;width: 363px;float:left}
 #informacaocontato iframe{width: 363px}
 #informacaocontato h3{margin-bottom: 20px}
+
+
+
+/*  Perfil */
+
+#formperfil {width: 345px;float:left;padding: 10px}
+#formperfil input[type = "text"]{width: 345px;}
+#formperfil select{width: 345px;}
+#formperfil ul.errorlist{color: #C30}
+#formperfil form{margin-top: 20px}
+

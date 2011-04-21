@@ -1,6 +1,14 @@
-<div class="block_full">
-	
-	<h2>Serviços</h2>
+{% extends "layout.html" %}
+
+{%  block titulo %}Galeria imagens{% endblock %}
+
+
+
+
+{%block conteudo%}
+
+<div id="conteudo_interno">
+	<h3>Serviços</h3>
 	{% for servicos in link_servico_destaque %}
 	<div class="servico_full_index">
 		<div class="img_servico_full">			
@@ -12,9 +20,8 @@
 	</div>
 	
 	{%endfor%}
-
-		
-	
-	<a href="/link/maisservicos/" class="ver_mais">ver mais +</a>
-	
 </div>
+
+{% endblock %}
+
+{% block direita %}{% endblock %}

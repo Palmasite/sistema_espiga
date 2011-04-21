@@ -27,5 +27,7 @@ urlpatterns = patterns('',
     (r'^enquete/', include('enquete.urls')),
     (r'^video/', include('video.urls')),
     (r'^contato/',include('contato.urls')),
+    (r'^link/', include('link.urls')),
+    (r'^perfil/', include('perfilinicial.urls')),
     
 )

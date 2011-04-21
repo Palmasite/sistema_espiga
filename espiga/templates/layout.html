@@ -22,38 +22,8 @@
 
 			</div>
 		</div>
-		<div id="menu">
-			<ul>
-				<li>
-					PRINCIPAL
-				</li>
-				<li>
-					INSTITUCIONAL
-				</li>
-				<li>
-					SERVIÇOS
-				</li>
-				<li>
-					FOTOS
-				</li>
-				<li>
-					VÍDEOS
-				</li>
-				<li>
-					NOTÍCIAS
-				</li>
-				<li>
-					ARTIGO
-				</li>
-				<li>
-					LINKS
-				</li>
-				<li>
-					CONTATO
-				</li>
-			</ul>
-		</div>
 		
+			
 			{% include "graos_index/full_banner.html" %}
 		
 		<div id="content">
@@ -83,6 +53,7 @@
 				{% include "graos_index/links_rapidos.html" %}
 				{% include "graos_index/banner_direita.html" %}
 				{% include "graos_index/enquete.html" %}
+				{% include "graos_index/links_direita.html" %}
 			</div>
 			{% endblock %}
 			
@@ -104,9 +75,10 @@
 	
 	<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.js"></script>
 	<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery_ui/jquery-ui-1.8.11.custom.min.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}/js/paginas_internas/index.js"></script>
+
 	{%block includejs%}
-		<script type="text/javascript" src="{{MEDIA_URL}}/js/paginas_internas/index.js"></script>
-		
+	
 	{%endblock%}
 	
 	
