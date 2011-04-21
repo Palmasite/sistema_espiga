@@ -7,6 +7,11 @@
 	jQuery(function($){
 		$( "button, input:submit", "" ).button();
 		$( "#enquete").buttonset();
+		$( "#datepicker" ).datepicker({
+			showOn: "button",
+			buttonImage: "/media/css/images_portal/",
+			buttonImageOnly: true
+		});
 	});
 
 

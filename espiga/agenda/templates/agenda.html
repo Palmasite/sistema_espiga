@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block includecss %}
+	<link rel='stylesheet' type='text/css' href='{{MEDIA_URL}}/css/fullcalendar/theme.css' /> 
+	<link rel='stylesheet' type='text/css' href='{{MEDIA_URL}}/js/fullcalendar/fullcalendar.css' /> 
+{%endblock%}
+
+{%  block titulo %}Contatos{% endblock %}
+
+{% block conteudo %}
+	<div id="conteudo_interno">
+		<div id='calendar'></div>
+	</div>
+	<div style="display:none" id="evento-message" title="Evento">
+		 
+	</div>
+	
+{% endblock %}
+	
+{% block direita %}{% endblock %}
+
+{%block includejs%}
+		<script type='text/javascript' src='{{MEDIA_URL}}/js/fullcalendar/fullcalendar.min.js'></script> 
+		
+	{%endblock%}
+	
+	
+{% block scriptjs%}
+
+	<script type='text/javascript'> 
+ 
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			eventClick: function(event) {
+		        
+		        $("#evento-message").attr("title",event.title)
+		        $("#evento-message").html(event.descricao);
+		        
+		        $( "#dialog:ui-dialog" ).dialog( "destroy" );
+				$( "#evento-message" ).dialog({
+					modal: true,
+					buttons: {
+						Ok: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+		        
+		        return false;
+		        
+		   },
+			theme: true,
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			
+			editable: true,
+			events: [
+			{% for evento in eventos%}	
+				{
+					id : 	'{{evento.id_eventos}}',
+					title: '{{evento.titulo}}',
+					start: new Date({{evento.inicio|date:"Y"}}, {{evento.inicio|date:"m"}}-1, {{evento.inicio|date:"d"}},{{evento.inicio|date:"h"}},{{evento.inicio|date:"i"}}),
+					end: new Date({{evento.fim|date:"Y"}}, {{evento.fim|date:"m"}}-1, {{evento.fim|date:"d"}},{{evento.inicio|date:"h"}},{{evento.inicio|date:"i"}}),
+					url: '{{evento.url}}',
+					descricao: '{{evento.descricao}}',
+					allDay: false
+					
+				},
+			{% endfor %}
+			]
+		});
+		
+	});
+ 
+	 $(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			
+		});
+ 
+</script> 
+
+{% endblock %}	

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{%  block titulo %}Contatos{% endblock %}
+
+{% block conteudo %}
+	<div id="conteudo_interno">
+		<div id='Evento'>
+			Agenda : {{evento.agenda}}<br/>
+			Titulo : {{evento.titulo}}<br/>
+			Iinicio : {{evento.inicio}}<br />
+			Fim : {{evento.fim}}<br />
+			Local : {{evento.local}}<br />
+			Descricao : {{evento.descricao}}<br />
+		</div>
+	</div>
+{% endblock %}
+{% block direita %}{% endblock %}
+	

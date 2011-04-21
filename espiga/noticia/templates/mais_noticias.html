@@ -1,25 +1,19 @@
 {% extends "layout.html" %}
 
-{% block titulo %} mais noticias {%endblock%}
-
 {%block conteudo%}
 {% load nomemes %}
-<div id="conteudo_interno">
-	<div id='noticia_formbusca'>
-		
-		<h3> Buscar notícia </h3>
-		<form name="noticia_buscar" method="GET" action="/noticia/buscarnoticia/">
+	<div id="conteudo_interno">
+		<div id='noticia_formbusca'>
 			
-			<input type="text" id='busca' name='buscar' />
-			<input type="submit" value="Buscar"></>
+			<h3> Buscar notícia </h3>
+			<form name="noticia_buscar" method="GET" action="/noticia/buscarnoticia/">
+				
+				<input type="text" id='busca' name='buscar' />
+				<input type="submit" value="Buscar"></>
+				
+			</form>
 			
-		</form>
-		
 	</div>
-	
-	
-	
-	
 	<ul class="outras_noticias">
 		{% for mes in lista_noticias_mes %}
 	

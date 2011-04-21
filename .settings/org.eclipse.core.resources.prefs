@@ -1,10 +1,14 @@
-#Tue Apr 19 08:47:37 BRT 2011
+#Thu Apr 21 10:09:40 BRT 2011
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=c78a7def9922b5fe3750780aa1506c4e75138c21
 eclipse.preferences.version=1
 encoding//espiga/admin_utils.py=utf-8
+encoding//espiga/agenda/admin.py=utf-8
+encoding//espiga/agenda/models.py=utf-8
+encoding//espiga/agenda/urls.py=utf-8
 encoding//espiga/bancoimagem/admin.py=utf-8
+encoding//espiga/bancoimagem/models.py=utf-8
 encoding//espiga/bancoimagem/urls.py=utf-8
 encoding//espiga/configuracoes/admin.py=utf-8
 encoding//espiga/contato/models.py=utf-8

@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     
     
     (r'^noticia/', include('noticia.urls')),
+    (r'^agenda/', include('agenda.urls')),
     (r'^bancoimagem/', include('bancoimagem.urls')),
     (r'^enquete/', include('enquete.urls')),
     (r'^video/', include('video.urls')),

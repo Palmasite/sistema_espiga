@@ -1,0 +1,15 @@
+<div class="eventos_lista block_full">
+	<header class="block_header">
+		<h2>Eventos</h2>
+		<input  type="hidden" id="datepicker">
+	</header>
+	<ul class="eventos_lista">
+		{% for noticia in outras_noticias %}
+		<li><a href="/noticia/detalhar/{{ noticia.int_idnoticia }}/"><span>{{ noticia.dat_noticia|timesince }} - </span>{{ noticia.txt_olho|striptags|slice:"70" }}...</a></li>
+		{% endfor %}
+		
+	</ul>
+	
+	<a class="ver_mais">ver mais +</a>
+	
+</div>

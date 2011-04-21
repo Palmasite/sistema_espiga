@@ -58,12 +58,12 @@
 		
 		<div id="content">
 			{% block colunaEsquerda %}
-			<div id="coluna-esquerda">
-				{% include "graos_index/banner_esquerda.html" %}
-				{% include "graos_index/area_restrita.html" %}
-				{% include "graos_index/videos_ligth.html" %}
-				{% include "graos_index/netWorks_ligth.html" %}
-			</div>
+				<div id="coluna-esquerda">
+					{% include "graos_index/banner_esquerda.html" %}
+					{% include "graos_index/area_restrita.html" %}
+					{% include "graos_index/videos_ligth.html" %}
+					{% include "graos_index/netWorks_ligth.html" %}
+				</div>
 			{% endblock %}
 			
 			{% block conteudo %}
@@ -71,6 +71,7 @@
 				
 				{% include "graos_index/noticias_destaque.html" %}
 				{% include "graos_index/noticias_lista.html" %}
+				{% include "graos_index/eventos_full.html" %}
 				{% include "graos_index/fotos_full.html" %}
 				{% include "graos_index/servicos_full.html" %}
 				
