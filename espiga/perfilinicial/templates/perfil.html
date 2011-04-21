@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{%  block titulo %}Galeria imagens{% endblock %}
+
+{% block direita %}{% endblock %}
+
+
+{% block includecss %}
+	<link rel="stylesheet" href="{{MEDIA_URL}}css/galeria_galleriffic_css/basic.css" type="text/css" />
+	<link rel="stylesheet" href="{{MEDIA_URL}}css/galeria_galleriffic_css/galleriffic-5.css" type="text/css" />
+	<link rel="stylesheet" href="{{MEDIA_URL}}css/galeria_galleriffic_css/white.css" type="text/css" />
+
+	{%endblock%}
+
+{%block conteudo%}
+
+<div id="conteudo_interno">
+	<h3>Editar perfil</h3>
+	{{perfil}}
+	<div id="formperfil"></>
+		<form method="POST">
+			 {% if formperfil %}{{formperfil.as_table}}{% endif %}
+			 
+			 <input type="submit" value="Savar alterações" ></input>
+			
+		</form>
+	</div>
+</div>
+	{%endblock%}
+
+
+	{%block includejs%}
+
+	{% endblock %}
+
+	{% block scriptjs%}
+
+	{% endblock %}
+
+

@@ -1,24 +1,19 @@
+# -*-ecoding:utf-8 -*-
 from django.db import models
 from thumbs import ImageWithThumbsField
 from django.conf import settings
-# Create your models here.
+
 from django.contrib.auth.models import User
 import os
 
-
-
 class Perfil(models.Model):
-
-    #cargos = (('1','Prefeito'),('2','Vice-Prefeito'),('3','Primeira-Dama'),('4','Secretario de Governo'),('5','Assessor Parlamentar'),('6','Chefe de Gabinete'))
     int_idperfil = models.AutoField(primary_key=True)
     vch_nome = models.CharField("Nome", max_length = 250)
+    vch_cargo = models.CharField("Cargo", max_length = 250)
+    vch_area = models.CharField(u"Área", max_length = 250)
+    matricula = models.CharField("Matricula", max_length = 250)
     user = models.ForeignKey(User)
-    #int_cargo = models.IntegerField("Cargo", choices=cargos)
     img_foto = ImageWithThumbsField(verbose_name = "Foto ", upload_to = "foto", sizes = ((180,237),), null = True, blank = True,)
-    #txt_curriculo = models.TextField("Curriculo",  )
-    #txt_trajetoria = models.TextField("Trajetoria Politica", null=True, blank= True,)    
-
-	
     
     def save(self, force_insert=False, force_update=False):
         super(Perfil, self).save(force_insert, force_update)
@@ -41,4 +36,35 @@ class Perfil(models.Model):
     class Meta:
         verbose_name = "Perfil"
         verbose_name_plural = "Perfis"
+
+
+
+class Profissional(models.Model):
+    list_tipo = (('1',u'Profissão'),('2',u'Especialização'))    
+    int_idprofissao = models.AutoField(primary_key=True)
+    vch_formacao = models.CharField(u"Formação", max_length = 250)
+    vch_instituicao = models.CharField(u"Instituição", max_length = 250)
+    vch_local = models.CharField("Local", max_length = 250)
+    vch_tipo = models.CharField("Tipo", max_length = 2, choices = list_tipo)    
+    perfil = models.ForeignKey(Perfil)
     
+    def __unicode__(self):
+        return unicode(self.vch_formacao)
+
+class Contato(models.Model):
+    list_tipo = (('1','Fone/Ramal'),('2','Cel. trabalho'),('3','Cel. pessoal'),('4','Email trabalho'),('5','Email pessoal'),)
+    int_idcontato = models.AutoField(primary_key=True)
+    vch_contato = models.CharField("Contato", max_length = 250)
+    vch_tipo = models.CharField("Tipo", max_length = 2, choices = list_tipo)    
+    perfil = models.ForeignKey(Perfil)
+    
+    def __unicode__(self):
+        return unicode(self.vch_contato)
+    
+    
+class RedeSocial(models.Model):
+    list_tipo = (('1','Orkut'),('2','Facebook'),('3','MSN'))  
+    int_idcontato = models.AutoField(primary_key=True)
+    rede = models.CharField("Contato", max_length = 250)
+    vch_tipo = models.CharField("Tipo", max_length = 2, choices = list_tipo)    
+    perfil = models.ForeignKey(Perfil)
