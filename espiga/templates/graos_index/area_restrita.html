@@ -14,9 +14,17 @@
 		<a href="lose_pass">Esqueci minha senha</a>
 		</fieldset>
 		
-		
 		{% else %}
-			SEJA BEM VINDO <br /><strong>{{auth.username}}</strong>
+			
+			{% if not user_perfil.img_foto %}
+				<div id="auth_foto">
+					<img src="{{MEDIA_URL}}/images_portal/user_none.jpg"  />
+				{{user_perfil.img_foto}}
+				</div>
+			{% endif %}
+			
+			SEJA BEM VINDO
+			 <br /><strong>{{auth.username}}</strong>
 			<a href="/logout/">Sair</a>
 		{% endif %}
 		

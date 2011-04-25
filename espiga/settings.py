@@ -42,7 +42,7 @@ TIME_ZONE = 'America/Araguaina'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'pt-br'
 
-SITE_ID = 3
+SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -101,6 +101,18 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+#
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "processors.auth",
+    "processors.ultimo_video",
+    "processors.publicidade",
+    "processors.enquete",
+)
 AUTH_PROFILE_MODULE = 'espiga.perfilinicial'
 
 MIDDLEWARE_CLASSES = (

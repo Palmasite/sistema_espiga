@@ -4,8 +4,8 @@
 		<input  type="hidden" id="datepicker">
 	</header>
 	<ul class="eventos_lista">
-		{% for noticia in outras_noticias %}
-		<li><a href="/noticia/detalhar/{{ noticia.int_idnoticia }}/"><span>{{ noticia.dat_noticia|timesince }} - </span>{{ noticia.txt_olho|striptags|slice:"70" }}...</a></li>
+		{% for evento in ultimos_eventos %}
+		<li><a href="/agenda/eventos/"><span>{{ evento.inicio|date:"d / M" }} - </span>{{ evento.titulo }}...</a></li>
 		{% endfor %}
 		
 	</ul>
