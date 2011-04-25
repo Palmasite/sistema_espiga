@@ -12,7 +12,7 @@ from noticia.models import Noticia
 from agenda.models import Eventos
 from enquete.models import Enquete, Escolha
 from publicidade.models import Publicidade
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.redirects.models import Redirect
 from urllib2 import HTTPRedirectHandler
 from django.core import serializers
@@ -27,7 +27,7 @@ def index(request):
      #    auth = request.user
          
     #lista de noticias       
-    outras_noticias  = Noticia.objects.filter(boo_ativo = True)[:4]
+    outras_noticias = Noticia.objects.filter(boo_ativo=True)[:4]
     
     #lista galeria
     lista_galeria = Galeria.objects.all()[:3]
@@ -35,10 +35,10 @@ def index(request):
     
     
     #noticias_destque
-    noticias_destaque = Noticia.objects.filter(boo_ativo = True).filter(boo_destaque = True);
+    noticias_destaque = Noticia.objects.filter(boo_ativo=True).filter(boo_destaque=True);
    
     #eventos
-    ultimos_eventos = Eventos.objects.filter(inicio__gt = datetime.date.today())
+    ultimos_eventos = Eventos.objects.filter(inicio__gt=datetime.date.today())
     
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 
@@ -52,14 +52,14 @@ def logar(request):
     user_login = authenticate(username=user, password=passw)    
     if user_login is not None:
         if user_login.is_active:
-            retorno = {'status':'ok','message':'<span>Seja bem vindo : <strong>'+user_login.username+'</strong></span>'}
-            login(request,user_login)
+            retorno = {'status':'ok', 'message':'<span>Seja bem vindo : <strong>' + user_login.username + '</strong></span>'}
+            login(request, user_login)
         else:
-            retorno = {'status':'no','message':'<span style="color:#A20000">usario não ativo<span>'}
+            retorno = {'status':'no', 'message':'<span style="color:#A20000">usario não ativo<span>'}
     else:
-        retorno ={'status':'no','message':'<span style="color:#A20000">Usuário ou senha inválido<span>'}
+        retorno = {'status':'no', 'message':'<span style="color:#A20000">Usuário ou senha inválido<span>'}
     
-    return HttpResponse(simplejson.dumps(retorno),mimetype)
+    return HttpResponse(simplejson.dumps(retorno), mimetype)
 
 def sair(request):
     logout(request)

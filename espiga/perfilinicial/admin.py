@@ -7,14 +7,14 @@ from configuracoes.models import Modulo
 class PerfilAdmin(admin.ModelAdmin):	
     class Media:
         model = Perfil
-        js = (settings.MEDIA_URL + "js/jquery.js",# insere o jquery na pagina
-              settings.MEDIA_URL + "editorHtml/jscripts/tiny_mce/tiny_mce.js",# insere o javascript do editor html na pagina
+        js = (settings.MEDIA_URL + "js/jquery.js", # insere o jquery na pagina
+              settings.MEDIA_URL + "editorHtml/jscripts/tiny_mce/tiny_mce.js", # insere o javascript do editor html na pagina
               settings.MEDIA_URL + "editorHtml/textarea.js",)# insere o javascript do editor html na pagina
 
 
 
 
-if Modulo.objects.filter(modulo = 'perfilinicial'): 
+if Modulo.objects.filter(modulo='perfilinicial'): 
     admin.site.register(Perfil, PerfilAdmin)
 
 

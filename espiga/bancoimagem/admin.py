@@ -22,14 +22,14 @@ class AdminBancoImagemInline(MeuTabularInline):
         
 class GaleriaAdmin(MeuModelAdmin):
     model = Galeria
-    inlines = [AdminBancoImagemInline,]
+    inlines = [AdminBancoImagemInline, ]
     
 class BancoImagemAdmin(admin.ModelAdmin):
-    list_display = ('vch_titulo','galeria')
+    list_display = ('vch_titulo', 'galeria')
     list_filter = ['galeria']
     model = BancoImagem
  
  
-if Modulo.objects.filter(modulo = 'bancoimagem'): 
+if Modulo.objects.filter(modulo='bancoimagem'): 
     admin.site.register(Galeria, GaleriaAdmin)
     admin.site.register(BancoImagem, BancoImagemAdmin)

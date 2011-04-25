@@ -9,15 +9,15 @@ def eventos(request):
     
     eventos = Eventos.objects.all();
     
-    return render_to_response('agenda.html',locals(), context_instance=RequestContext(request))
+    return render_to_response('agenda.html', locals(), context_instance=RequestContext(request))
 
-def evento(request,eventos_id):
-    evento = Eventos.objects.get(pk = eventos_id)
+def evento(request, eventos_id):
+    evento = Eventos.objects.get(pk=eventos_id)
     
     if request.is_ajax():
         html = "<p>f asdf asd</p>"
         return html
         
     
-    return render_to_response('evento.html',locals(),context_instance=RequestContext(request))
+    return render_to_response('evento.html', locals(), context_instance=RequestContext(request))
     

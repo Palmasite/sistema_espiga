@@ -5,7 +5,7 @@ from django.conf import settings
 # Create your models here.
 class Servico(models.Model):
     int_idservico = models.AutoField(primary_key=True)
-    vch_titulo = models.CharField("Titulo", max_length = 250)
+    vch_titulo = models.CharField("Titulo", max_length=250)
     txt_servico = models.TextField(u"Serviço")
     boo_ativo = models.BooleanField("Ativa", default=True)
 

@@ -10,7 +10,7 @@ def modulos():
     list_modulos = ContentType.objects.all().order_by('app_label')
     modulos = ()
     for l in list_modulos:
-        modulos = modulos + ((l.app_label,l.app_label),)
+        modulos = modulos + ((l.app_label, l.app_label),)
     
     # Cremover itens repetido de uma lista 
     modulo = list(map(itemgetter(0), groupby(modulos)))
@@ -18,8 +18,8 @@ def modulos():
 
 class Modulo(models.Model):
     listmodulos = modulos()
-    idmodulo = models.AutoField(primary_key = True)
-    modulo = models.CharField("Modulo",max_length = 200, choices = listmodulos)
+    idmodulo = models.AutoField(primary_key=True)
+    modulo = models.CharField("Modulo", max_length=200, choices=listmodulos)
 
     def __unicode__(self):
         return self.modulo
@@ -30,14 +30,14 @@ def upload_to_foto_topobg(instance, name):
     if img != '':
         nome = 'topo_bg'
     extensao = os.path.splitext(name)[-1]
-    return os.path.join('images_portal/','%s%s'%(nome, extensao))
+    return os.path.join('images_portal/', '%s%s' % (nome, extensao))
 
 def upload_to_foto_img_topo(instance, name):
     img = str(instance.img_topo)
     if img != '':
         nome = 'head_bg'
     extensao = os.path.splitext(name)[-1]
-    return os.path.join('images_portal/','%s%s'%(nome, extensao))
+    return os.path.join('images_portal/', '%s%s' % (nome, extensao))
 
 
 def upload_to_foto_img_logo(instance, name):
@@ -45,7 +45,7 @@ def upload_to_foto_img_logo(instance, name):
     if img != '':
         nome = 'logo'
     extensao = os.path.splitext(name)[-1]
-    return os.path.join('images_portal/','%s%s'%(nome, extensao))
+    return os.path.join('images_portal/', '%s%s' % (nome, extensao))
 
 
 def upload_to_foto_img_menufundo(instance, name):
@@ -54,45 +54,45 @@ def upload_to_foto_img_menufundo(instance, name):
         nome = 'menu_bg'
     extensao = os.path.splitext(name)[-1]
     
-    return os.path.join('images_portal/','%s%s'%(nome, extensao))
+    return os.path.join('images_portal/', '%s%s' % (nome, extensao))
 
 class Layout(models.Model):
-    idlayout = models.AutoField(primary_key = True)
+    idlayout = models.AutoField(primary_key=True)
     #topo_bg.png
-    img_topobg = ImageWithThumbsField(verbose_name = "Background do topo ", upload_to = upload_to_foto_topobg,null = True, blank = True,)
+    img_topobg = ImageWithThumbsField(verbose_name="Background do topo ", upload_to=upload_to_foto_topobg, null=True, blank=True,)
     #head_bg.png
-    img_topo = ImageWithThumbsField(verbose_name = "Imagem topo", upload_to = upload_to_foto_img_topo, null = True, blank = True,)
+    img_topo = ImageWithThumbsField(verbose_name="Imagem topo", upload_to=upload_to_foto_img_topo, null=True, blank=True,)
     #logo.jpg
-    img_logo = ImageWithThumbsField(verbose_name = "Logo ", upload_to = upload_to_foto_img_logo, null = True, blank = True,)
+    img_logo = ImageWithThumbsField(verbose_name="Logo ", upload_to=upload_to_foto_img_logo, null=True, blank=True,)
     #menu_bg.png
-    img_menufundo = ImageWithThumbsField(verbose_name = "Background do menu", upload_to = upload_to_foto_img_menufundo, null = True, blank = True,)
+    img_menufundo = ImageWithThumbsField(verbose_name="Background do menu", upload_to=upload_to_foto_img_menufundo, null=True, blank=True,)
         
     
     """ funcao que coloca as imagens no campo img_foto na consulta """
     def topobg(self):
         foto = str(self.img_topobg)
-        img = '<img style="width:100px;heigth:100px" src="/espiga/media/'+foto+'"/>'       
+        img = '<img style="width:100px;heigth:100px" src="/espiga/media/' + foto + '"/>'       
         return img
     topobg.allow_tags = True
     topobg.short_description = u'Topo Background'
     
     def topo(self):
         foto = str(self.img_topo)
-        img = '<img style="width:100px;heigth:100px" src="/espiga/media/'+foto+'"/>'
+        img = '<img style="width:100px;heigth:100px" src="/espiga/media/' + foto + '"/>'
         return img
     topo.allow_tags = True
     topo.short_descritpion = u'Topo'
     
     def logo(self):
         foto = str(self.img_logo)
-        img = '<img style="width:100px;heigth:100px" src="/espiga/media/'+foto+'"/>'
+        img = '<img style="width:100px;heigth:100px" src="/espiga/media/' + foto + '"/>'
         return img
     logo.allow_tags = True
     logo.short_descritpion = u'Logo'
     
     def menufundo(self):
         foto = str(self.img_menufundo)
-        img = '<img style="width:100px;heigth:100px" src="/espiga/media/'+foto+'"/>'
+        img = '<img style="width:100px;heigth:100px" src="/espiga/media/' + foto + '"/>'
         return img
     menufundo.allow_tags = True
     menufundo.short_descritpion = u'Fundo_do_menu'

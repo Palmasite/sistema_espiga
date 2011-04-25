@@ -23,7 +23,7 @@ def upload_to_arquivo(instance, name):
     data = datetime.now()
     horario = str(data.day) + '_' + str(data.month) + '_' + str(data.year) + '_' + str(data.hour) + '_' + str(data.minute) + '_' + str(data.second)
     #raise Exception(os.path.join('%s/'%(pasta_galeria),'%s%s'%(horario, extensao)))
-    return os.path.join('upload/%s/'%(pasta_galeria),'%s%s'%(horario, extensao))
+    return os.path.join('upload/%s/' % (pasta_galeria), '%s%s' % (horario, extensao))
     #return os.path.join('galeria/', '%s%s'%(horario, extensao))
 
 
@@ -48,7 +48,7 @@ class Arquivo(models.Model):
             extensao = str(arquivo).split('.')[-1]
             data = datetime.now()
             horario = str(data.day) + '_' + str(data.month) + '_' + str(data.year) + '_' + str(data.hour) + '_' + str(data.minute) + '_' + str(data.second)
-            self.vch_arquivo = "upload/%s/%s.%s" % (str(pasta_galeria),str(horario), extensao)
+            self.vch_arquivo = "upload/%s/%s.%s" % (str(pasta_galeria), str(horario), extensao)
             if os.path.exists(settings.MEDIA_ROOT + '/' + arquivo):
                 os.rename(settings.MEDIA_ROOT + '/' + arquivo, settings.MEDIA_ROOT + '/' + str(self.vch_arquivo))
             else:

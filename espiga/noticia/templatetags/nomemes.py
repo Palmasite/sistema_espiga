@@ -4,7 +4,7 @@ register = template.Library()
 
 MES = {
        1:'Janeiro',
-       2:'Fevereiro', 
+       2:'Fevereiro',
        3:u'Março',
        4:'Abril',
        5:'Maio',

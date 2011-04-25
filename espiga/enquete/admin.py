@@ -10,7 +10,7 @@ from configuracoes.models import Modulo
 
 """ Tabular inline de escolha """
 class EscolhaInline(MeuTabularInline):
-    fieldsets = ((None,{'fields':('escolha',)}),)
+    fieldsets = ((None, {'fields':('escolha',)}),)
     model = Escolha  
     #max_num = 3
 
@@ -26,5 +26,5 @@ class EnqueteAdmin(MeuModelAdmin):
     class Media:
         model = Enquete
 
-if Modulo.objects.filter(modulo = 'enquete'):
+if Modulo.objects.filter(modulo='enquete'):
     admin.site.register(Enquete, EnqueteAdmin)

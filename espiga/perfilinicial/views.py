@@ -17,7 +17,7 @@ def perfil(request):
     
     if request.user.is_authenticated():
         try:
-            perfil = Perfil.objects.get(user = request.user)
+            perfil = Perfil.objects.get(user=request.user)
             formperfil = PerfilForm(instance=perfil)
             
         except:
@@ -34,4 +34,4 @@ def perfil(request):
     else:
         pass
         
-    return render_to_response('perfil.html',locals(), context_instance=RequestContext(request))
+    return render_to_response('perfil.html', locals(), context_instance=RequestContext(request))

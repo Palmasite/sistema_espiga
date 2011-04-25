@@ -1,0 +1,5 @@
+*.pyc
+.project
+.pydevproject
+media/galeria/*
+espiga/templates/index.html

@@ -9,7 +9,7 @@ from contato.models import Departamento
 class FormContato(forms.ModelForm):
     def enviar(self):
 
-        departamento = Departamento.objects.get(descricao = self.cleaned_data['departamento'])
+        departamento = Departamento.objects.get(descricao=self.cleaned_data['departamento'])
 
         titulo = self.cleaned_data['assunto']
         destino = str(departamento.email)
@@ -17,12 +17,12 @@ class FormContato(forms.ModelForm):
         Nome: %s
         E-mail remetente: %s
         Mensagem:%s
-        """ % (self.cleaned_data['nome'],self.cleaned_data['email'],self.cleaned_data['mensagem'])
+        """ % (self.cleaned_data['nome'], self.cleaned_data['email'], self.cleaned_data['mensagem'])
     
         send_mail(
-            subject = titulo,
-            message = mensagem,
-            from_email = destino,
+            subject=titulo,
+            message=mensagem,
+            from_email=destino,
             recipient_list=[destino],
         )
     

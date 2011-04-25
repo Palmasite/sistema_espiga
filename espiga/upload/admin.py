@@ -23,13 +23,13 @@ class ArquivoInline(MeuTabularInline):
 
 class GaleriaAdmin(MeuModelAdmin):
     model = Galeria
-    inlines = [ArquivoInline,]
+    inlines = [ArquivoInline, ]
     
 class ArquivoAdmin(admin.ModelAdmin):
     list_filter = ['galeria']
     model = Arquivo
     
-if Modulo.objects.filter(modulo = 'servico'):
+if Modulo.objects.filter(modulo='servico'):
     admin.site.register(Galeria, GaleriaAdmin)
     admin.site.register(Arquivo, ArquivoAdmin)
     

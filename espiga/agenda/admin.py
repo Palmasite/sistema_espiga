@@ -10,10 +10,10 @@ class AdminAgenda(admin.ModelAdmin):
 class AdminEventos(admin.ModelAdmin):
     class Media:
         model = Eventos
-        js = (settings.MEDIA_URL + "/js/editorHtml/jscripts/tiny_mce/tiny_mce.js",# insere o javascript do editor html na pagina
+        js = (settings.MEDIA_URL + "/js/editorHtml/jscripts/tiny_mce/tiny_mce.js", # insere o javascript do editor html na pagina
               settings.MEDIA_URL + "/js/editorHtml/textarea.js",)# insere o javascript do editor html na pagina
 
     
-if Modulo.objects.filter(modulo = 'agenda'):
+if Modulo.objects.filter(modulo='agenda'):
     admin.site.register(Agenda, AdminAgenda)
     admin.site.register(Eventos, AdminEventos)

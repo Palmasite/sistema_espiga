@@ -18,8 +18,8 @@ class FormattedDateInput(forms.DateTimeInput):
 
 
 class ArquivoForm(ModelForm):
-    dat_publicacao = forms.DateField(label = u"Data de Publicação", input_formats=[DATE_FORMAT], widget=FormattedDateInput(), help_text="Formato: dd/mm/aaaa")
-    txt_resumo = forms.CharField(label = "Resumo",required=False,widget = TextInput(attrs = {'rows':'20'},),help_text = "Digite o nome do titular")
+    dat_publicacao = forms.DateField(label=u"Data de Publicação", input_formats=[DATE_FORMAT], widget=FormattedDateInput(), help_text="Formato: dd/mm/aaaa")
+    txt_resumo = forms.CharField(label="Resumo", required=False, widget=TextInput(attrs={'rows':'20'},), help_text="Digite o nome do titular")
 
     def clean_vch_arquivo(self):
 		vch_arquivo = self.cleaned_data['vch_arquivo']

@@ -13,7 +13,7 @@ class Video(models.Model):
     vch_url = models.CharField("URL video", max_length=500, help_text=u"Preferência no tamanho do vídeo 853 X 510.",)
     dat_dataenvio = models.DateTimeField("Data Envio", default=datetime.now())
     boo_ativo = models.BooleanField("Ativo", default=True)
-    img_foto = ImageWithThumbsField("Foto", upload_to = 'fotovideo/', sizes = ((143,87),), null = True, blank = True,)
+    img_foto = ImageWithThumbsField("Foto", upload_to='fotovideo/', sizes=((143, 87),), null=True, blank=True,)
     
     def save(self, force_insert=False, force_update=False):
         super(Video, self).save(force_insert, force_update)
@@ -23,8 +23,8 @@ class Video(models.Model):
             f = str(foto).split('.') 
             """ Renomeia img_foto"""
             if not "368x278" in f:    
-                self.img_foto = f[0]+'.143x87.'+f[1]
-                os.remove(settings.MEDIA_ROOT+'/'+foto)
+                self.img_foto = f[0] + '.143x87.' + f[1]
+                os.remove(settings.MEDIA_ROOT + '/' + foto)
                         
             super(Video, self).save(force_insert, force_update)
             """ Apaga a foto original da pasta """
@@ -35,7 +35,7 @@ class Video(models.Model):
     def foto(self):
         foto = str(self.img_foto)
     
-        img = '<img src="/espiga/media/'+foto+'"/>'       
+        img = '<img src="/espiga/media/' + foto + '"/>'       
         return img
 
     foto.allow_tags = True                 
