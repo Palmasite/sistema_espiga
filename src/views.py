@@ -50,6 +50,7 @@ def index(request):
     # Menu Vertical
     categorias = Categoria.objects.all()
     paginas = Pagina.objects.all()
+<<<<<<< HEAD
 
 
 
@@ -58,6 +59,8 @@ def index(request):
     link_servico_destaque = Link.objects.filter(boo_destaque = True).filter(categoria = 3)[:6]# para servicos
     link_rapidos = Link.objects.filter(categoria = 4) #links rapidos
     link_rapidos_destaque = Link.objects.filter(categoria = 1) #links rapidos destaque
+=======
+>>>>>>> a62c7d117f838a048d43ee5b5697ac7a49f41b10
     
     
     

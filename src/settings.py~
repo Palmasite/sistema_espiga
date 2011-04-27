@@ -112,6 +112,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "processors.ultimo_video",
     "processors.publicidade",
     "processors.enquete",
+<<<<<<< HEAD:src/settings.py~
+=======
+    "processors.menu",
+>>>>>>> a62c7d117f838a048d43ee5b5697ac7a49f41b10:src/settings.py~
 )
 AUTH_PROFILE_MODULE = 'espiga.perfilinicial'
 
@@ -152,16 +156,28 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'noticia',
     'bancoimagem',
+<<<<<<< HEAD:src/settings.py~
+=======
+    'configuracoes',
+>>>>>>> a62c7d117f838a048d43ee5b5697ac7a49f41b10:src/settings.py~
     'enquete',
     'perfilinicial',
     'video',
     'upload',
+<<<<<<< HEAD:src/settings.py~
     #'servico',
     'publicidade',
     #'configuracoes',
     'link',
     'contato',
     'agenda',
+=======
+    'publicidade',
+    'link',
+    'contato',
+    'agenda',
+    'paginasstaticas',
+>>>>>>> a62c7d117f838a048d43ee5b5697ac7a49f41b10:src/settings.py~
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

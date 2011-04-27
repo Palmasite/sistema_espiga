@@ -5,8 +5,6 @@ from django.conf import settings
 from datetime import datetime
 from admin_utils import MeuModelAdmin, MeuTabularInline 
 
-
-
 try:
     import Image
 except ImportError:

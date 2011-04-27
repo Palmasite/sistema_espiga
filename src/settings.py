@@ -112,6 +112,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "processors.ultimo_video",
     "processors.publicidade",
     "processors.enquete",
+    "processors.menu",
 )
 AUTH_PROFILE_MODULE = 'espiga.perfilinicial'
 
@@ -152,6 +153,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'noticia',
     'bancoimagem',
+    'configuracoes',
     'enquete',
     'perfilinicial',
     'video',
