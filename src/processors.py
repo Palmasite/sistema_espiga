@@ -8,10 +8,10 @@ from enquete.models import Enquete, Escolha
 from django.db import connection
 
 def auth(request):
-    auth = False
-    if request.user.is_authenticated():
-         auth = request.user
-         user_perfil = Perfil.objects.get(user=auth)
+    #auth = False
+    #if request.user.is_authenticated():
+    #     auth = request.user
+    #     user_perfil = Perfil.objects.get(user=auth)
     
     return locals()
 
@@ -43,8 +43,8 @@ def publicidade(request):
 
 def enquete(request):
     #enquete
-    ultima_enquete = Enquete.objects.latest("id_enquete") 
-    enquete_esolhas = Escolha.objects.filter(enquete=ultima_enquete)
+    #ultima_enquete = Enquete.objects.latest("id_enquete") 
+    #enquete_esolhas = Escolha.objects.filter(enquete=ultima_enquete)
     
     return locals()
 

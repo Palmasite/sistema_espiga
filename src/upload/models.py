@@ -58,6 +58,7 @@ class Arquivo(models.Model):
         return unicode(self.vch_titulo)
     
     class Meta:
+        ordering = ('dat_publicacao',)
         verbose_name = u'Arquivo'
         verbose_name_plural = u'Arquivos'
 

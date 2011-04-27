@@ -31,9 +31,9 @@ input{border: none;height: 28px}
 /* 
  * Estrutura
  */
-#head{width:100%;height: 130px;background:#254689}
-#topo{width:1000px;height: 130px;background:#254689;margin:0 auto;background: url("../images_portal/topo_bg.png") repeat-x}
-#cabecalho{width:990px;height: 20px;background: #845768;margin:0 auto;text-align: right;padding: 5px ;background: url("../images_portal/head_bg.png")}
+#head{width:100%;height: 160px;background:#254689;background: url("../images_portal/head_bg.jpg")}
+#topo{width:1000px;height: 100%;background:#254689;margin:0 auto;background: url("../images_portal/topo_bg.jpg") repeat-x}
+#cabecalho{width:990px;height: 20px;margin:0 auto;text-align: right;padding: 5px ;}
 #menu{width:100%;height: 50px;background:#435674;text-align: center}
 #content{width:1000px;background:#378264;margin:0 auto}
 #coluna-esquerda{width:200px;float:left}
@@ -55,7 +55,7 @@ input{border: none;height: 28px}
  */
 #menu {background:url("../menu_bg.png")}
 #menu ul{list-style: none;margin:0 auto;width:1000px}
-#menu ul li{float:left;padding:15px 20px}
+#menu ul li{float:left;padding:5px 20px;color:#fff;font-weight: bold}
 
 /*
  * Graos

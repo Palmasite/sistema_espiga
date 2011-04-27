@@ -1,6 +1,6 @@
 from django.contrib import admin
-from models import Departamento, Contato, DadosEmpresa
-from configuracoes.models import Modulo
+from contato.models import Departamento, Contato, DadosEmpresa
+
 from django.conf import settings
 
 class AdmiDadosEmpresa(admin.ModelAdmin):
@@ -12,10 +12,6 @@ class AdmiDadosEmpresa(admin.ModelAdmin):
               settings.MEDIA_URL + "/js/editorHtml/textarea.js",)# insere o javascript do editor html na pagina
 
 
-if Modulo.objects.filter(modulo='contato'):
-    admin.site.register(Departamento)
-    admin.site.register(Contato)
-    admin.site.register(DadosEmpresa, AdmiDadosEmpresa)
-
-
-
+admin.site.register(Departamento)
+admin.site.register(Contato)
+admin.site.register(DadosEmpresa, AdmiDadosEmpresa)

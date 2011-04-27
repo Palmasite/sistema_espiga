@@ -29,5 +29,7 @@ urlpatterns = patterns('',
     (r'^contato/', include('contato.urls')),
     (r'^link/', include('link.urls')),
     (r'^perfil/', include('perfilinicial.urls')),
+    (r'^page/', include('paginasstaticas.urls')),
+    (r'^arquivo/', include('upload.urls')),
     
 )

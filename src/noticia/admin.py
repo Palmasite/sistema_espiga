@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from models import Noticia, Categoria
+from noticia.models import Noticia, Categoria
 from django.conf import settings
 from django import forms
-from configuracoes.models import Modulo
+
 
 """ Admin Noticia """
 class AdminNoticia(admin.ModelAdmin):
@@ -17,7 +17,9 @@ class AdminNoticia(admin.ModelAdmin):
               settings.MEDIA_URL + "/js/editorHtml/textarea.js",)# insere o javascript do editor html na pagina
 
 
-if Modulo.objects.filter(modulo='noticia'): 
-    admin.site.register(Noticia, AdminNoticia)
-    admin.site.register(Categoria)
+
+admin.site.register(Noticia, AdminNoticia)
+admin.site.register(Categoria)
+
+
     

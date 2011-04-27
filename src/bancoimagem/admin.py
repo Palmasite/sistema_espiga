@@ -4,7 +4,7 @@ from models import BancoImagem, Galeria
 from django.conf import settings
 from datetime import datetime
 from admin_utils import MeuModelAdmin, MeuTabularInline 
-from configuracoes.models import Modulo
+
 
 
 try:
@@ -28,8 +28,8 @@ class BancoImagemAdmin(admin.ModelAdmin):
     list_display = ('vch_titulo', 'galeria')
     list_filter = ['galeria']
     model = BancoImagem
+    
+admin.site.register(Galeria, GaleriaAdmin)
+admin.site.register(BancoImagem, BancoImagemAdmin)
  
- 
-if Modulo.objects.filter(modulo='bancoimagem'): 
-    admin.site.register(Galeria, GaleriaAdmin)
-    admin.site.register(BancoImagem, BancoImagemAdmin)
+

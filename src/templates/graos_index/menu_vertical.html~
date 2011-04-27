@@ -1,0 +1,34 @@
+<dl id="paginas">
+{% if categorias %}
+    {% for categoria in categorias %}
+    
+                {%if categoria.url%}
+               
+    
+                <dt><a href="/page/{{categoria.url}}">{{categoria.titulo}}</a></dt>
+                
+                 {%else%}
+                 
+                 {{categoria.titulo}}
+                 
+                 {% endif %}
+                 
+    
+           
+        {% for pagina in paginas %}
+        
+            {% if pagina.categoria.int_idcategoria == categoria.int_idcategoria%}    
+        
+                <li>
+	                <a href="/page/{{categoria.titulo}}/{{pagina.url}}">{{pagina.titulo}}</a>
+	
+                </li>
+                
+            {% endif %}
+        {% endfor %}    
+
+    {% endfor %}
+    
+{% endif %}
+
+</dl>

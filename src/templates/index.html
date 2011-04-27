@@ -1,5 +1,30 @@
 {% extends "layout.html" %}
+
 {% block cabecalho %}
 	{% include "graos_index/menu_horizontal.html" %}
+{% endblock %}
 
+{%block colunaEsquerda%}
+<div id="coluna-esquerda">
+	{% include "graos_index/area_restrita.html" %}
+	{% include "graos_index/menu_vertical.html" %}
+</div>
+{%endblock%}
+
+{%block conteudo%}
+<div id="conteudo">
+	{% include "graos_index/noticias_destaque.html" %}
+	{% include "graos_index/noticias_lista.html" %}
+	{% include "graos_index/eventos_full.html" %}
+	{% include "graos_index/fotos_full.html" %}
+	{% include "graos_index/servicos_full.html" %}
+</div>
+{%endblock%}
+
+{% block direita %}
+	<div id="coluna-direita">
+		{% include "graos_index/links_rapidos.html" %}
+		{% include "graos_index/banner_direita.html" %}
+		{% include "graos_index/links_direita.html" %}
+	</div>
 {% endblock %}

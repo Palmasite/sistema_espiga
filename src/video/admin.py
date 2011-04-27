@@ -3,7 +3,7 @@ from django.contrib import admin
 from video.models import Video
 from django import forms
 from django.contrib.auth.models import User
-from configuracoes.models import Modulo
+
 
 """ Admin Arquivo """
 class VideoAdmin(admin.ModelAdmin):
@@ -22,6 +22,5 @@ class VideoAdmin(admin.ModelAdmin):
     
     """ Altera o formulario arquivo se for da comunicacao mostra o combo com todas as secretarias se nao esconde o campo secretaria """
 
+admin.site.register(Video, VideoAdmin)
 
-if Modulo.objects.filter(modulo='video'): 
-	admin.site.register(Video, VideoAdmin)

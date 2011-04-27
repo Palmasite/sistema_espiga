@@ -5,7 +5,7 @@ from enquete.models import Enquete, Escolha
 from admin_utils import MeuModelAdmin, MeuTabularInline
 #from autenticacao.models import UserRH
 from django.conf import settings
-from configuracoes.models import Modulo
+
 
 
 """ Tabular inline de escolha """
@@ -25,6 +25,8 @@ class EnqueteAdmin(MeuModelAdmin):
           
     class Media:
         model = Enquete
+        
+    
+admin.site.register(Enquete, EnqueteAdmin)
 
-if Modulo.objects.filter(modulo='enquete'):
-    admin.site.register(Enquete, EnqueteAdmin)
+

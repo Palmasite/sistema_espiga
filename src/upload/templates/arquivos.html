@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{%  block titulo %}Videos{% endblock %}
+
+{% block direita %}{% endblock %}
+
+
+{%block conteudo%}
+
+    {% for galeria in lista_galeria %}
+    
+        {{galeria.descricao}}
+        {% for doc in lista_arquivo %}
+            {% if doc.5 == galeria.idgaleria %}
+            
+                <img src="{{doc.4}}"/> {{doc.1}}
+             {%endif%}
+        
+        {%endfor%}
+    {% endfor %}
+
+
+{% endblock %}

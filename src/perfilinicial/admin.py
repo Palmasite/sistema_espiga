@@ -2,7 +2,7 @@
 from django.contrib import admin
 from perfilinicial.models import Perfil
 from django.conf import settings
-from configuracoes.models import Modulo
+
 
 class PerfilAdmin(admin.ModelAdmin):	
     class Media:
@@ -14,8 +14,6 @@ class PerfilAdmin(admin.ModelAdmin):
 
 
 
-if Modulo.objects.filter(modulo='perfilinicial'): 
-    admin.site.register(Perfil, PerfilAdmin)
-
+admin.site.register(Perfil, PerfilAdmin)
 
          

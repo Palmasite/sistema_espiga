@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+
+{% block titulo %} {{pagina.titulo}} {%endblock%}
+
+
+{%block conteudo%}
+<div id="conteudo_interno">
+     <h3>{{pagina.titulo}}</h3>
+     
+     
+     <div id='pagina_contedo'>
+     
+        {{pagina.conteudo}}
+     
+     </div>
+     
+	
+</div>
+{% endblock %}
+
+{% block direita %}
+{% endblock %}

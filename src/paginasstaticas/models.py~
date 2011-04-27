@@ -1,0 +1,45 @@
+from django.db import models
+
+# Create your models here.
+
+class Categoria(models.Model):
+    int_idcategoria = models.AutoField(primary_key=True)
+    titulo = models.CharField("Categoria", max_length=250)
+    url = models.CharField("Url", max_length=250, blank=True, null=True)
+    conteudo = models.TextField("Conteudo", blank=True, null=True)
+    def __unicode__(self):
+        return self.titulo
+    class Meta:
+        ordering = ('titulo',)
+        verbose_name = "Categoria"
+        
+        
+class Pagina(models.Model):
+    int_idpagina = models.AutoField(primary_key=True)
+    titulo = models.CharField("Titulo", max_length=250)
+    url = models.CharField("Url", max_length=250)
+    conteudo = models.TextField("Conteudo")
+    categoria = models.ForeignKey(Categoria)
+   
+    def __unicode__(self):
+        return self.titulo   
+
+    class Meta:
+        unique_together = ("url",)
+        ordering = ('titulo',)
+    
+    
+class Menu(models.Model):
+    int_idpagina = models.AutoField(primary_key=True)
+    titulo = models.CharField("Titulo", max_length=250)
+    url = models.CharField("Url", max_length=250)
+    conteudo = models.TextField("Conteudo")
+    categoria = models.ForeignKey(Categoria)
+   
+    def __unicode__(self):
+        return self.titulo   
+
+    class Meta:
+        unique_together = ("url",)
+        ordering = ('titulo',)
+    
