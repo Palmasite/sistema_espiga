@@ -1,6 +1,14 @@
-# Django settings for sistema_espiga project.
+# Django settings for espiga project.
 
+import os, platform
+PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+MEDIA_ROOT_PATH = PROJECT_ROOT_PATH
+MEDIA_ROOT_URL = '/'
+MEDIA_ROOT_URL_ADMIN = '/'
+
+LOCAL = True
 DEBUG = True
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -11,12 +19,13 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/var/www/django/projects/sistema_espiga/sistema_espiga/src/sqlite.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'sebrae', # Or path to database file if using sqlite3.
+        'USER': 'postgres', # Not used with sqlite3.
+        'PASSWORD': 'postgres', # Not used with sqlite3.
+        'HOST': 'localhost', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', # Set to empty string for default. Not used with sqlite3.
+
     }
 }
 
@@ -27,11 +36,11 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Araguaina'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 SITE_ID = 1
 
@@ -45,12 +54,12 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(MEDIA_ROOT_PATH, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = MEDIA_ROOT_URL + 'media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -65,7 +74,7 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = MEDIA_ROOT_URL + 'admin_media/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -83,7 +92,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'l3rk%ot_2i667)4fc!$z9tfura#3j6!vcp@&x$uxtiukic^6b1'
+SECRET_KEY = 'ru_ld)yn6c!v-$1#)dhr2_$x)r$+9=gxxm-zxsmmuft2l3dvfr'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -92,21 +101,46 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+#
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "processors.auth",
+    "processors.ultimo_video",
+    "processors.publicidade",
+    "processors.enquete",
+    "processors.menu",
+)
+AUTH_PROFILE_MODULE = 'espiga.perfilinicial'
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+#    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'sistema_espiga.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT_PATH, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'warleysystem@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -115,6 +149,20 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'django.contrib.comments',
+    'noticia',
+    'bancoimagem',
+    'configuracoes',
+    'enquete',
+    'perfilinicial',
+    'video',
+    'upload',
+    'publicidade',
+    'link',
+    'contato',
+    'agenda',
+    'paginasstaticas',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

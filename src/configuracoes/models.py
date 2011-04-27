@@ -135,3 +135,36 @@ class Layout(models.Model):
             super(Layout, self).save(force_insert, force_update)
         
             raise Exception(ftpbg)'''
+
+class Menu(models.Model):
+    list_tipo = (('1','Horizontal'), ('2','Vertical'), ('3','Rodape'))
+    nome = models.CharField("Nome", max_length=250)
+    tipo = models.CharField("Tipo de Menu", max_length=1, choices=list_tipo,)
+    submenu = models.ForeignKey('Menu',blank = True,null = True )
+  
+    def __unicode__(self):
+        return self.nome
+    
+    def itens(self):
+        return Item_Menu.objects.filter(menu = self)
+    
+    class Meta:
+        ordering = ('id',)
+        verbose_name = "Menu"
+        
+class Item_Menu(models.Model):
+    menu = models.ForeignKey(Menu)
+    nome = models.CharField("Titulo", max_length=250)
+    url = models.CharField("Url", max_length=250,blank = True,null = True,default = "#")
+    subitem = models.ForeignKey('Item_Menu',blank = True,null = True )
+   
+    def __unicode__(self):
+        return self.nome   
+
+    def subitems(self):
+        return Item_Menu.objects.filter(subitem = self) 
+        
+    class Meta:
+        unique_together = ("nome",)
+        ordering = ('id',)
+

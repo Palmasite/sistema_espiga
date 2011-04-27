@@ -2,11 +2,12 @@
 from django.contrib import admin
 from django.conf import settings
 from publicidade.models import Publicidade
-from configuracoes.models import Modulo
+
+admin.site.register(Publicidade)
 
 
-if Modulo.objects.filter(modulo='publicidade'): 
-    admin.site.register(Publicidade)
+
+
     
     
     

@@ -6,7 +6,7 @@ from django import forms
 from django.contrib.auth.models import User
 from admin_utils import MeuTabularInline, MeuModelAdmin
 from django.conf import settings
-from configuracoes.models import Modulo
+
 
 
 
@@ -29,7 +29,8 @@ class ArquivoAdmin(admin.ModelAdmin):
     list_filter = ['galeria']
     model = Arquivo
     
-if Modulo.objects.filter(modulo='servico'):
-    admin.site.register(Galeria, GaleriaAdmin)
-    admin.site.register(Arquivo, ArquivoAdmin)
     
+admin.site.register(Galeria, GaleriaAdmin)
+admin.site.register(Arquivo, ArquivoAdmin)
+    
+

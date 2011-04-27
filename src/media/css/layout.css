@@ -31,9 +31,9 @@ input{border: none;height: 28px}
 /* 
  * Estrutura
  */
-#head{width:100%;height: 130px;background:#254689}
-#topo{width:1000px;height: 130px;background:#254689;margin:0 auto;background: url("../images_portal/topo_bg.png") repeat-x}
-#cabecalho{width:990px;height: 20px;background: #845768;margin:0 auto;text-align: right;padding: 5px ;background: url("../images_portal/head_bg.png")}
+#head{width:100%;height: 160px;background:#254689;background: url("../images_portal/head_bg.jpg")}
+#topo{width:1000px;height: 100%;background:#254689;margin:0 auto;background: url("../images_portal/topo_bg.jpg") repeat-x}
+#cabecalho{width:990px;height: 20px;margin:0 auto;text-align: right;padding: 5px ;}
 #menu{width:100%;height: 50px;background:#435674;text-align: center}
 #content{width:1000px;background:#378264;margin:0 auto}
 #coluna-esquerda{width:200px;float:left}
@@ -55,7 +55,7 @@ input{border: none;height: 28px}
  */
 #menu {background:url("../menu_bg.png")}
 #menu ul{list-style: none;margin:0 auto;width:1000px}
-#menu ul li{float:left;padding:15px 20px}
+#menu ul li{float:left;padding:5px 20px;color:#fff;font-weight: bold}
 
 /*
  * Graos
@@ -77,7 +77,16 @@ h2{padding:5px 2px;border-left:solid 8px #123345} /* ---------------------------
 
 #votar{margin:10px 30px}
 
+/*
+   Menu Vertical
+*/
 
+#menu_vertical{width:200px;text-align:left;font-size:12px}
+#menu_vertical dt{width:170px ;margin-left:10px;padding:4px;color:#2D5F9D;font-size:16px}
+#menu_vertical dt a{color:#2D5F9D;}
+#menu_vertical dd{width:170px ;margin-left:10px;padding:4px;font-size:14px}
+#menu_vertical dd a{padding-left:4px}
+#menu_vertical dd:hover{background:#EFEFEF}
 
 /*
  * full banner
@@ -247,7 +256,6 @@ ul.eventos_lista li span{font-weight: bold}
 
 
 /* Galeria de imagens index */
-
 
 /* Galeria de videos  */
 

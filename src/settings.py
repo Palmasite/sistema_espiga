@@ -20,7 +20,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'espiga', # Or path to database file if using sqlite3.
+        'NAME': 'sebrae', # Or path to database file if using sqlite3.
         'USER': 'postgres', # Not used with sqlite3.
         'PASSWORD': 'postgres', # Not used with sqlite3.
         'HOST': 'localhost', # Set to empty string for localhost. Not used with sqlite3.
@@ -112,6 +112,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "processors.ultimo_video",
     "processors.publicidade",
     "processors.enquete",
+    "processors.menu",
 )
 AUTH_PROFILE_MODULE = 'espiga.perfilinicial'
 
@@ -121,7 +122,6 @@ MIDDLEWARE_CLASSES = (
 #    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -150,20 +150,19 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    #'django.contrib.flatpages',
     'django.contrib.comments',
     'noticia',
     'bancoimagem',
+    'configuracoes',
     'enquete',
     'perfilinicial',
     'video',
     'upload',
-    'servico',
     'publicidade',
-    'configuracoes',
     'link',
     'contato',
     'agenda',
+    'paginasstaticas',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

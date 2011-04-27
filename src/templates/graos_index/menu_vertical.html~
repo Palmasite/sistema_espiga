@@ -1,0 +1,18 @@
+
+
+    {%for m in menu_vertical%}
+        <dl id="menu_vertical">    
+                <h2> {{m.nome}} </h2>
+            
+               {%for item in m.itens%}               
+                   <dt><a href="{{item.url}}">{{item.nome}}</a></dt>
+               
+                   {%for sitem in item.subitems%}
+                        <dd>
+                            <a href="{{sitem.url}}">{{sitem.nome}}</a>
+                        </dd>
+                    {%endfor%}
+                {%endfor%}
+        </dl>
+    {%endfor%}
+

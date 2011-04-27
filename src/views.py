@@ -2,24 +2,30 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template import RequestContext
-from datetime import datetime
+
 from django.utils import simplejson
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.redirects.models import Redirect
+from django.core import serializers
+from django.utils import simplejson
+
+from urllib2 import HTTPRedirectHandler
+
+from datetime import datetime
+import datetime
+
+from link.models import Link, Categoria
 from noticia.models import Noticia
 from bancoimagem.models import BancoImagem, Galeria
+from paginasstaticas.models import Pagina, Categoria
 from video.models import Video
 from noticia.models import Noticia
 from agenda.models import Eventos
 from enquete.models import Enquete, Escolha
 from publicidade.models import Publicidade
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.redirects.models import Redirect
-from urllib2 import HTTPRedirectHandler
-from django.core import serializers
-from django.utils import simplejson
 
-import datetime
-from link.models import Link, Categoria
+
 
 def index(request):
     #verifica se ta authenticado
@@ -39,6 +45,15 @@ def index(request):
    
     #eventos
     ultimos_eventos = Eventos.objects.filter(inicio__gt=datetime.date.today())
+    
+    
+    # Menu Vertical
+    categorias = Categoria.objects.all()
+    paginas = Pagina.objects.all()
+    
+    
+    
+    
     
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 

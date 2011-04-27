@@ -5,13 +5,14 @@ from link.models import Link
 from perfilinicial.models import Perfil
 from publicidade.models import Publicidade
 from enquete.models import Enquete, Escolha
+from configuracoes.models import Menu
 from django.db import connection
 
 def auth(request):
-    auth = False
-    if request.user.is_authenticated():
-         auth = request.user
-         user_perfil = Perfil.objects.get(user=auth)
+    #auth = False
+    #if request.user.is_authenticated():
+    #     auth = request.user
+    #     user_perfil = Perfil.objects.get(user=auth)
     
     return locals()
 
@@ -43,8 +44,8 @@ def publicidade(request):
 
 def enquete(request):
     #enquete
-    ultima_enquete = Enquete.objects.latest("id_enquete") 
-    enquete_esolhas = Escolha.objects.filter(enquete=ultima_enquete)
+    #ultima_enquete = Enquete.objects.latest("id_enquete") 
+    #enquete_esolhas = Escolha.objects.filter(enquete=ultima_enquete)
     
     return locals()
 
@@ -56,4 +57,10 @@ def links(request):
     link_rapidos_destaque = Link.objects.filter(categoria=1) #links rapidos destaque
     
     return locals()
-
+    
+def menu(request):
+    menu_horizontal = Menu.objects.filter(tipo = 1)
+    menu_vertical = Menu.objects.filter(tipo = 2)
+    menu_rodape = Menu.objects.filter(tipo = 3)
+    
+    return locals()
